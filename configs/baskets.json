@@ -1,0 +1,22 @@
+{
+  "default_basket": "SPX",
+  "start": "2023-01-01",
+  "baskets": [
+    {
+      "name": "SPX",
+      "symbols": ["SPX"],
+      "description": "Primary SPX basket for the first bot integration test"
+    },
+    {
+      "name": "QQQ",
+      "symbols": ["QQQ"],
+      "description": "Secondary single-symbol basket"
+    },
+    {
+      "name": "IWM",
+      "symbols": ["IWM"],
+      "description": "Secondary single-symbol basket"
+    }
+  ]
+}
+

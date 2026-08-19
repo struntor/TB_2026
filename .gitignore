@@ -1,0 +1,22 @@
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Local IDE settings
+.idea/
+
+# Generated runtime data and temporary work directories
+runs/
+tmp*/
+*.log
+
+# Secrets and local environment configuration
+.env
+.env.*
+*.key
+*.pem
+secrets/

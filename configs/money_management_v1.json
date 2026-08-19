@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "as_of": "2026-06-23",
+  "currency": "USD",
+  "account_size_usd": 10000.0,
+  "risk_per_trade_pct": 1.0,
+  "max_open_trades": 10,
+  "max_open_trades_long": 5,
+  "max_open_trades_short": 5,
+  "description": "Manual money-management defaults. Adjust the account size, risk per trade, and max open trades before live use."
+}

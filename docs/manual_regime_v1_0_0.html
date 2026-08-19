@@ -1,0 +1,1347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Manual Regime V1.0.0 – Regelwerk und Ergebnisse</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Manual Regime V1.0.0 – Regelwerk und Ergebnisse" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Manual Regime V1.0.0 – Regelwerk und Ergebnisse&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(--background) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: light-dark(rgb(255 255 255), rgb(24 24 24));
+  --foreground: light-dark(rgb(26 28 31), rgb(255 255 255));
+  --card: color-mix(in oklab, var(--foreground) 5%, transparent);
+  --card-foreground: var(--foreground);
+  --popover: light-dark(rgb(255 255 255), rgb(45 45 45));
+  --popover-foreground: var(--foreground);
+  --primary: light-dark(rgb(51 156 255), rgb(131 195 255));
+  --primary-foreground: light-dark(rgb(255 255 255), rgb(13 13 13));
+  --secondary: light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%));
+  --secondary-foreground: var(--foreground);
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: light-dark(
+    rgb(26 28 31 / 49.4%),
+    rgb(255 255 255 / 49.8%)
+  );
+  --accent: light-dark(rgb(229 242 255), rgb(13 39 63));
+  --accent-foreground: var(--primary);
+  --destructive: light-dark(rgb(226 85 7), rgb(255 133 73));
+  --border: light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%));
+  --input: light-dark(
+    rgb(26 28 31 / 11.8%),
+    color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+  );
+  --ring: light-dark(rgb(51 156 255), rgb(131 195 255 / 76%));
+  --font-size-base: 14px;
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: 12.5px;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+  --color-background-primary: var(--background);
+  --color-text-primary: var(--foreground);
+  --color-border-secondary: var(--border);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--viz-font-weight-medium);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;manual-regime-doc-v1&quot;&gt;
+  &lt;header class=&quot;doc-head&quot;&gt;
+    &lt;div class=&quot;viz-row&quot;&gt;
+      &lt;span class=&quot;viz-badge&quot;&gt;Produktionsbaseline&lt;/span&gt;
+      &lt;code&gt;manual-regime-baseline@1.0.0&lt;/code&gt;
+      &lt;span class=&quot;text-muted&quot;&gt;Stand 16.07.2026 · Daten bis 15.07.2026&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;h2&gt;Regelwerk, Risikologik und belegte Ergebnisse&lt;/h2&gt;
+    &lt;div class=&quot;viz-grid headline-stats&quot; aria-label=&quot;Kennzahlen des aktuellen Backtests&quot;&gt;
+      &lt;div class=&quot;card viz-stat&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;Ausführbare Trades&lt;/span&gt;&lt;span class=&quot;viz-stat-value&quot;&gt;1.066&lt;/span&gt;&lt;span class=&quot;text-small&quot;&gt;664 Gewinner · 402 Verlierer&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;card viz-stat&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;Netto-PnL&lt;/span&gt;&lt;span class=&quot;viz-stat-value&quot;&gt;+38.083,89&amp;nbsp;$&lt;/span&gt;&lt;span class=&quot;text-small&quot;&gt;10.000&amp;nbsp;$ → 48.083,89&amp;nbsp;$&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;card viz-stat&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;Profit Factor&lt;/span&gt;&lt;span class=&quot;viz-stat-value&quot;&gt;2,023&lt;/span&gt;&lt;span class=&quot;text-small&quot;&gt;Trefferquote 62,29&amp;nbsp;%&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;card viz-stat&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;Max. Drawdown&lt;/span&gt;&lt;span class=&quot;viz-stat-value&quot;&gt;−1.134,44&amp;nbsp;$&lt;/span&gt;&lt;span class=&quot;text-small&quot;&gt;Backtest ohne Gebühren und Slippage&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;section aria-labelledby=&quot;flow-heading&quot;&gt;
+    &lt;h2 id=&quot;flow-heading&quot;&gt;Vom Kursbalken zur protokollierten Order&lt;/h2&gt;
+    &lt;div class=&quot;pipeline&quot; role=&quot;img&quot; aria-label=&quot;Ablauf von Rohdaten über Regime, Regel, Filter und Positionsgröße bis Journal und TWS&quot;&gt;
+      &lt;div class=&quot;pipe-step&quot;&gt;&lt;strong&gt;1 · Rohdaten&lt;/strong&gt;&lt;span&gt;5-Minuten-OHLC je Symbol&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;pipe-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/div&gt;
+      &lt;div class=&quot;pipe-step&quot;&gt;&lt;strong&gt;2 · Kausaler Stand&lt;/strong&gt;&lt;span&gt;Nur abgeschlossene Vortage; Entscheidung am zweiten Intraday-Balken&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;pipe-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/div&gt;
+      &lt;div class=&quot;pipe-step&quot;&gt;&lt;strong&gt;3 · Marktphase&lt;/strong&gt;&lt;span&gt;Swings, ATR, Breaks, Value/Volume und Wochenstruktur&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;pipe-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/div&gt;
+      &lt;div class=&quot;pipe-step&quot;&gt;&lt;strong&gt;4 · Entry-Katalog&lt;/strong&gt;&lt;span&gt;16 versionierte Regeln, davon 11 aktuell ausgewählt&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;pipe-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/div&gt;
+      &lt;div class=&quot;pipe-step&quot;&gt;&lt;strong&gt;5 · Live-Filter&lt;/strong&gt;&lt;span&gt;Baseline-Track, 318 Symbol/Regel-Paare, 2 aktive Vetos&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;pipe-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/div&gt;
+      &lt;div class=&quot;pipe-step&quot;&gt;&lt;strong&gt;6 · Risiko&lt;/strong&gt;&lt;span&gt;100&amp;nbsp;$ Budget je Trade; Stückzahl aus Stop-Distanz&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;pipe-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/div&gt;
+      &lt;div class=&quot;pipe-step&quot;&gt;&lt;strong&gt;7 · Nachweis&lt;/strong&gt;&lt;span&gt;DecisionRecord → Journal → Bracket-Order/TWS&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;regime-section&quot; aria-labelledby=&quot;regime-heading&quot;&gt;
+    &lt;h2 id=&quot;regime-heading&quot;&gt;Die Engine handelt Zustandswechsel, nicht isolierte Kerzen&lt;/h2&gt;
+    &lt;svg class=&quot;regime-map&quot; viewBox=&quot;0 0 700 270&quot; role=&quot;img&quot; aria-labelledby=&quot;regime-title regime-desc&quot;&gt;
+      &lt;title id=&quot;regime-title&quot;&gt;Regime-Zustandsmodell&lt;/title&gt;
+      &lt;desc id=&quot;regime-desc&quot;&gt;Seitwärts kann in bullische Tier-Stufen oder einen bärischen Versuch wechseln. Bestätigte Abwärtsphasen können in Gegenbewegung und anschließend in Reparatur oder erneute Schwäche übergehen.&lt;/desc&gt;
+      &lt;defs&gt;
+        &lt;marker id=&quot;arrow-regime&quot; viewBox=&quot;0 0 10 10&quot; refX=&quot;8&quot; refY=&quot;5&quot; markerWidth=&quot;6&quot; markerHeight=&quot;6&quot; orient=&quot;auto-start-reverse&quot;&gt;&lt;path d=&quot;M 0 0 L 10 5 L 0 10 z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;&lt;/marker&gt;
+      &lt;/defs&gt;
+      &lt;g class=&quot;map-edge&quot; marker-end=&quot;url(#arrow-regime)&quot;&gt;
+        &lt;path d=&quot;M135 135 C180 90 210 72 255 62&quot;&gt;&lt;/path&gt;
+        &lt;path d=&quot;M315 62 H390&quot;&gt;&lt;/path&gt;
+        &lt;path d=&quot;M460 62 H535&quot;&gt;&lt;/path&gt;
+        &lt;path d=&quot;M135 145 C190 185 220 202 265 210&quot;&gt;&lt;/path&gt;
+        &lt;path d=&quot;M330 210 H405&quot;&gt;&lt;/path&gt;
+        &lt;path d=&quot;M475 210 H540&quot;&gt;&lt;/path&gt;
+        &lt;path d=&quot;M574 188 C540 145 490 128 432 116&quot;&gt;&lt;/path&gt;
+        &lt;path d=&quot;M432 116 C390 108 350 108 315 118&quot;&gt;&lt;/path&gt;
+      &lt;/g&gt;
+      &lt;g class=&quot;state neutral&quot;&gt;&lt;rect x=&quot;30&quot; y=&quot;108&quot; width=&quot;110&quot; height=&quot;62&quot; rx=&quot;14&quot;&gt;&lt;/rect&gt;&lt;text x=&quot;85&quot; y=&quot;135&quot; text-anchor=&quot;middle&quot;&gt;sideways&lt;/text&gt;&lt;text x=&quot;85&quot; y=&quot;155&quot; text-anchor=&quot;middle&quot;&gt;keine Richtung&lt;/text&gt;&lt;/g&gt;
+      &lt;g class=&quot;state bull&quot;&gt;&lt;rect x=&quot;245&quot; y=&quot;35&quot; width=&quot;80&quot; height=&quot;54&quot; rx=&quot;14&quot;&gt;&lt;/rect&gt;&lt;text x=&quot;285&quot; y=&quot;67&quot; text-anchor=&quot;middle&quot;&gt;Tier 1&lt;/text&gt;&lt;/g&gt;
+      &lt;g class=&quot;state bull&quot;&gt;&lt;rect x=&quot;390&quot; y=&quot;35&quot; width=&quot;80&quot; height=&quot;54&quot; rx=&quot;14&quot;&gt;&lt;/rect&gt;&lt;text x=&quot;430&quot; y=&quot;67&quot; text-anchor=&quot;middle&quot;&gt;Tier 2&lt;/text&gt;&lt;/g&gt;
+      &lt;g class=&quot;state bull&quot;&gt;&lt;rect x=&quot;535&quot; y=&quot;35&quot; width=&quot;100&quot; height=&quot;54&quot; rx=&quot;14&quot;&gt;&lt;/rect&gt;&lt;text x=&quot;585&quot; y=&quot;58&quot; text-anchor=&quot;middle&quot;&gt;Tier 3&lt;/text&gt;&lt;text x=&quot;585&quot; y=&quot;76&quot; text-anchor=&quot;middle&quot;&gt;starker Trend&lt;/text&gt;&lt;/g&gt;
+      &lt;g class=&quot;state bear&quot;&gt;&lt;rect x=&quot;245&quot; y=&quot;183&quot; width=&quot;95&quot; height=&quot;54&quot; rx=&quot;14&quot;&gt;&lt;/rect&gt;&lt;text x=&quot;292&quot; y=&quot;206&quot; text-anchor=&quot;middle&quot;&gt;bearish&lt;/text&gt;&lt;text x=&quot;292&quot; y=&quot;224&quot; text-anchor=&quot;middle&quot;&gt;attempt&lt;/text&gt;&lt;/g&gt;
+      &lt;g class=&quot;state bear&quot;&gt;&lt;rect x=&quot;405&quot; y=&quot;183&quot; width=&quot;90&quot; height=&quot;54&quot; rx=&quot;14&quot;&gt;&lt;/rect&gt;&lt;text x=&quot;450&quot; y=&quot;206&quot; text-anchor=&quot;middle&quot;&gt;bearish&lt;/text&gt;&lt;text x=&quot;450&quot; y=&quot;224&quot; text-anchor=&quot;middle&quot;&gt;confirmed&lt;/text&gt;&lt;/g&gt;
+      &lt;g class=&quot;state bear&quot;&gt;&lt;rect x=&quot;540&quot; y=&quot;183&quot; width=&quot;120&quot; height=&quot;54&quot; rx=&quot;14&quot;&gt;&lt;/rect&gt;&lt;text x=&quot;600&quot; y=&quot;206&quot; text-anchor=&quot;middle&quot;&gt;bearish&lt;/text&gt;&lt;text x=&quot;600&quot; y=&quot;224&quot; text-anchor=&quot;middle&quot;&gt;countermove&lt;/text&gt;&lt;/g&gt;
+      &lt;text x=&quot;430&quot; y=&quot;130&quot; text-anchor=&quot;middle&quot;&gt;Reparatur / Reclaim&lt;/text&gt;
+    &lt;/svg&gt;
+    &lt;div class=&quot;viz-row legend-row&quot; aria-label=&quot;Legende&quot;&gt;
+      &lt;span&gt;&lt;i class=&quot;legend-swatch bull-swatch&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Bullische Zustände&lt;/span&gt;
+      &lt;span&gt;&lt;i class=&quot;legend-swatch bear-swatch&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Bärische Zustände&lt;/span&gt;
+      &lt;span class=&quot;text-muted&quot;&gt;Tier 2: ≥3 höhere Hochs und ≥1 höheres Tief · Tier 3: ≥5 höhere Hochs und ≥2 höhere Tiefs im Strukturfenster&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby=&quot;patterns-heading&quot;&gt;
+    &lt;h2 id=&quot;patterns-heading&quot;&gt;Vier Musterfamilien&lt;/h2&gt;
+    &lt;div class=&quot;pattern-grid&quot;&gt;
+      &lt;article class=&quot;pattern&quot;&gt;
+        &lt;h3&gt;Crash-Reparatur &amp;amp; Re-Entry&lt;/h3&gt;
+        &lt;svg class=&quot;pattern-chart&quot; viewBox=&quot;0 0 320 150&quot; role=&quot;img&quot; aria-label=&quot;V-förmige Crash-Reparatur mit Long-Entry über dem Reparaturhoch&quot;&gt;
+          &lt;path class=&quot;grid-line&quot; d=&quot;M20 35 H300 M20 75 H300 M20 115 H300&quot;&gt;&lt;/path&gt;
+          &lt;path class=&quot;price bull-line&quot; d=&quot;M25 35 L70 45 L105 118 L142 92 L180 100 L215 66 L260 50 L298 42&quot;&gt;&lt;/path&gt;
+          &lt;path class=&quot;guide&quot; d=&quot;M178 66 H300&quot;&gt;&lt;/path&gt;&lt;text x=&quot;184&quot; y=&quot;59&quot;&gt;Breakout / Entry&lt;/text&gt;
+          &lt;path class=&quot;guide&quot; d=&quot;M100 122 H220&quot;&gt;&lt;/path&gt;&lt;text x=&quot;105&quot; y=&quot;140&quot;&gt;Stop unter Reparaturtief&lt;/text&gt;
+          &lt;circle class=&quot;entry-mark&quot; cx=&quot;215&quot; cy=&quot;66&quot; r=&quot;5&quot;&gt;&lt;/circle&gt;
+        &lt;/svg&gt;
+        &lt;ul&gt;&lt;li&gt;Bärische Phase, danach belastbarer Rebuild.&lt;/li&gt;&lt;li&gt;Crash-Reversal: Stop unter Reparaturtief, Ziel 1R.&lt;/li&gt;&lt;li&gt;Post-Bear-Re-Entry: Tier 3, 3–15 Tage nach bearish, ≥5 HH/≥3 HL, starker Wochen-Rebuild.&lt;/li&gt;&lt;/ul&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;pattern&quot;&gt;
+        &lt;h3&gt;Pullback, Reclaim &amp;amp; Add-on&lt;/h3&gt;
+        &lt;svg class=&quot;pattern-chart&quot; viewBox=&quot;0 0 320 150&quot; role=&quot;img&quot; aria-label=&quot;Bullischer Trend mit höherem Tief, Reclaim-Entry und Add-on&quot;&gt;
+          &lt;path class=&quot;grid-line&quot; d=&quot;M20 35 H300 M20 75 H300 M20 115 H300&quot;&gt;&lt;/path&gt;
+          &lt;path class=&quot;price bull-line&quot; d=&quot;M25 115 L70 78 L105 92 L145 55 L180 76 L220 40 L250 58 L298 25&quot;&gt;&lt;/path&gt;
+          &lt;path class=&quot;guide&quot; d=&quot;M132 62 H205&quot;&gt;&lt;/path&gt;&lt;text x=&quot;136&quot; y=&quot;54&quot;&gt;Reclaim&lt;/text&gt;
+          &lt;circle class=&quot;entry-mark&quot; cx=&quot;145&quot; cy=&quot;55&quot; r=&quot;5&quot;&gt;&lt;/circle&gt;&lt;circle class=&quot;entry-mark&quot; cx=&quot;220&quot; cy=&quot;40&quot; r=&quot;5&quot;&gt;&lt;/circle&gt;
+          &lt;text x=&quot;224&quot; y=&quot;34&quot;&gt;Add-on&lt;/text&gt;&lt;text x=&quot;164&quot; y=&quot;92&quot;&gt;frisches höheres Tief&lt;/text&gt;
+        &lt;/svg&gt;
+        &lt;ul&gt;&lt;li&gt;Pullback-Reclaim benötigt bullisches Regime und strukturelles höheres Tief.&lt;/li&gt;&lt;li&gt;Bestätigtes HL: Entry erst über dem Bestätigungshoch.&lt;/li&gt;&lt;li&gt;Add-on nur zu bestehendem Full-Size-Long und nach neuem Pullback-Anker.&lt;/li&gt;&lt;/ul&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;pattern&quot;&gt;
+        &lt;h3&gt;Tier-3-Trendteilnahme&lt;/h3&gt;
+        &lt;svg class=&quot;pattern-chart&quot; viewBox=&quot;0 0 320 150&quot; role=&quot;img&quot; aria-label=&quot;Treppenförmiger Tier-3-Aufwärtstrend mit projiziertem Hoch und Breakout&quot;&gt;
+          &lt;path class=&quot;grid-line&quot; d=&quot;M20 35 H300 M20 75 H300 M20 115 H300&quot;&gt;&lt;/path&gt;
+          &lt;path class=&quot;price bull-line&quot; d=&quot;M25 120 L62 85 L92 98 L130 64 L160 77 L198 48 L228 59 L268 30&quot;&gt;&lt;/path&gt;
+          &lt;path class=&quot;guide&quot; d=&quot;M198 48 L268 30&quot;&gt;&lt;/path&gt;&lt;path class=&quot;guide dash&quot; d=&quot;M228 59 L285 43&quot;&gt;&lt;/path&gt;
+          &lt;circle class=&quot;entry-mark&quot; cx=&quot;268&quot; cy=&quot;30&quot; r=&quot;5&quot;&gt;&lt;/circle&gt;&lt;text x=&quot;205&quot; y=&quot;22&quot;&gt;HH ≥6 · HL ≥5&lt;/text&gt;&lt;text x=&quot;214&quot; y=&quot;91&quot;&gt;Stop: letztes Tief&lt;/text&gt;
+        &lt;/svg&gt;
+        &lt;ul&gt;&lt;li&gt;Struktureller Breakout nach frischem höheren Tief.&lt;/li&gt;&lt;li&gt;Full Size bei starkem Trend; Small Participation sonst 0,25×.&lt;/li&gt;&lt;li&gt;Projected High: kleiner Hoch-Schritt ≤0,5 ATR wird um den doppelten Schritt projiziert.&lt;/li&gt;&lt;/ul&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;pattern&quot;&gt;
+        &lt;h3&gt;Short: Breakdown &amp;amp; Fehlschlag&lt;/h3&gt;
+        &lt;svg class=&quot;pattern-chart&quot; viewBox=&quot;0 0 320 150&quot; role=&quot;img&quot; aria-label=&quot;Abwärtsbruch mit tieferem Hoch und erneutem Short-Entry&quot;&gt;
+          &lt;path class=&quot;grid-line&quot; d=&quot;M20 35 H300 M20 75 H300 M20 115 H300&quot;&gt;&lt;/path&gt;
+          &lt;path class=&quot;price bear-line&quot; d=&quot;M25 35 L70 50 L105 42 L145 88 L180 68 L215 100 L252 82 L298 125&quot;&gt;&lt;/path&gt;
+          &lt;path class=&quot;guide&quot; d=&quot;M20 75 H300&quot;&gt;&lt;/path&gt;&lt;text x=&quot;25&quot; y=&quot;69&quot;&gt;gebrochener Support&lt;/text&gt;
+          &lt;circle class=&quot;short-mark&quot; cx=&quot;215&quot; cy=&quot;100&quot; r=&quot;5&quot;&gt;&lt;/circle&gt;&lt;circle class=&quot;short-mark&quot; cx=&quot;252&quot; cy=&quot;82&quot; r=&quot;5&quot;&gt;&lt;/circle&gt;
+          &lt;text x=&quot;160&quot; y=&quot;54&quot;&gt;Lower High / Fail-Zone&lt;/text&gt;&lt;text x=&quot;220&quot; y=&quot;118&quot;&gt;Breakdown&lt;/text&gt;
+        &lt;/svg&gt;
+        &lt;ul&gt;&lt;li&gt;Gap-Breakdown: bestätigter Supportbruch, sichtbare tiefere Tiefs, kein Retest.&lt;/li&gt;&lt;li&gt;Lower-High-Failure: Bounce bleibt unter früherem Hoch und scheitert wieder.&lt;/li&gt;&lt;li&gt;Failed Countermove: reifer Bruch, Entscheidung und Vortagesschluss unter Fail-Zone.&lt;/li&gt;&lt;/ul&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby=&quot;atlas-heading&quot;&gt;
+    &lt;div class=&quot;section-head&quot;&gt;
+      &lt;div&gt;&lt;h2 id=&quot;atlas-heading&quot;&gt;Regel-Atlas V1.0.0&lt;/h2&gt;&lt;span id=&quot;rule-count&quot; class=&quot;text-muted&quot;&gt;16 Regeln&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;viz-controls&quot; aria-label=&quot;Regelfilter&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-rule-filter=&quot;all&quot; aria-pressed=&quot;true&quot;&gt;Alle&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-rule-filter=&quot;long&quot; aria-pressed=&quot;false&quot;&gt;Aktive Long&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-rule-filter=&quot;short&quot; aria-pressed=&quot;false&quot;&gt;Aktive Short&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-rule-filter=&quot;catalog&quot; aria-pressed=&quot;false&quot;&gt;Nur Katalog&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;table class=&quot;rule-table&quot;&gt;
+      &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Status / Regel&lt;/th&gt;&lt;th&gt;Kernauslöser&lt;/th&gt;&lt;th&gt;Schutz &amp;amp; Ziel&lt;/th&gt;&lt;th&gt;Backtest bis 15.07.2026&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+      &lt;tbody id=&quot;rule-table-body&quot;&gt;&lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;div class=&quot;text-small text-muted&quot;&gt;„Nur Katalog“ bedeutet: in der Engine versioniert, aber in der aktuellen optimierten Top50-Symbol/Regel-Auswahl ohne freigegebenes Paar. Es ist keine live aktive Regel.&lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby=&quot;veto-heading&quot;&gt;
+    &lt;h2 id=&quot;veto-heading&quot;&gt;Die zwei aktiven Vetos&lt;/h2&gt;
+    &lt;div class=&quot;veto-grid&quot;&gt;
+      &lt;article&gt;
+        &lt;h3&gt;1 · Weak-Retest-Veto&lt;/h3&gt;
+        &lt;div class=&quot;logic-chain&quot; role=&quot;img&quot; aria-label=&quot;Alle fünf Bedingungen müssen gleichzeitig wahr sein, damit der Failed-Countermove-Short verworfen wird&quot;&gt;
+          &lt;span&gt;Failed Countermove&lt;/span&gt;&lt;b&gt;+&lt;/b&gt;&lt;span&gt;Short&lt;/span&gt;&lt;b&gt;+&lt;/b&gt;&lt;span&gt;Struktur unklassifiziert&lt;/span&gt;&lt;b&gt;+&lt;/b&gt;&lt;span&gt;normales Trendvolumen&lt;/span&gt;&lt;b&gt;+&lt;/b&gt;&lt;span&gt;schwacher Retest&lt;/span&gt;&lt;b&gt;→&lt;/b&gt;&lt;span class=&quot;blocked&quot;&gt;Trade verwerfen&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+      &lt;article&gt;
+        &lt;h3&gt;2 · Kausales LHF-Cluster-Veto&lt;/h3&gt;
+        &lt;svg class=&quot;veto-timeline&quot; viewBox=&quot;0 0 700 145&quot; role=&quot;img&quot; aria-label=&quot;In den zwei Kalendertagen vor dem neuen Lower-High-Failure-Short werden nur bereits geschlossene Core-Short-Verluste gezählt&quot;&gt;
+          &lt;path class=&quot;axis&quot; d=&quot;M45 82 H655&quot;&gt;&lt;/path&gt;
+          &lt;path class=&quot;window&quot; d=&quot;M92 55 H470 V110 H92 Z&quot;&gt;&lt;/path&gt;
+          &lt;text x=&quot;105&quot; y=&quot;45&quot;&gt;Fenster: Entry −2 Kalendertage bis Entry, exklusiv&lt;/text&gt;
+          &lt;g class=&quot;loss-dot&quot;&gt;&lt;circle cx=&quot;145&quot; cy=&quot;82&quot; r=&quot;8&quot;&gt;&lt;/circle&gt;&lt;circle cx=&quot;205&quot; cy=&quot;82&quot; r=&quot;8&quot;&gt;&lt;/circle&gt;&lt;circle cx=&quot;265&quot; cy=&quot;82&quot; r=&quot;8&quot;&gt;&lt;/circle&gt;&lt;circle cx=&quot;325&quot; cy=&quot;82&quot; r=&quot;8&quot;&gt;&lt;/circle&gt;&lt;circle cx=&quot;385&quot; cy=&quot;82&quot; r=&quot;8&quot;&gt;&lt;/circle&gt;&lt;/g&gt;
+          &lt;path class=&quot;cut&quot; d=&quot;M470 35 V122&quot;&gt;&lt;/path&gt;&lt;text x=&quot;482&quot; y=&quot;76&quot;&gt;neuer LHF-Short&lt;/text&gt;&lt;text x=&quot;482&quot; y=&quot;96&quot;&gt;≥5 Verluste und Summe ≤−350&amp;nbsp;$ → Veto&lt;/text&gt;
+          &lt;text x=&quot;92&quot; y=&quot;132&quot;&gt;Nur geschlossene, zuvor behaltene Core-Shorts; verworfene Trades zählen nie später mit.&lt;/text&gt;
+        &lt;/svg&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby=&quot;risk-heading&quot;&gt;
+    &lt;h2 id=&quot;risk-heading&quot;&gt;Money-Management: fixes Dollar-Risiko&lt;/h2&gt;
+    &lt;div class=&quot;risk-flow&quot; role=&quot;img&quot; aria-label=&quot;Aus 100 Dollar Risikobudget und dem Abstand zwischen Entry und Stop ergibt sich eine ganzzahlige Stückzahl; Small Participation reduziert das Budget auf ein Viertel&quot;&gt;
+      &lt;div class=&quot;risk-node&quot;&gt;&lt;strong&gt;Risikobudget&lt;/strong&gt;&lt;span&gt;100&amp;nbsp;$ × Größenfaktor&lt;/span&gt;&lt;/div&gt;&lt;span aria-hidden=&quot;true&quot;&gt;÷&lt;/span&gt;
+      &lt;div class=&quot;risk-node&quot;&gt;&lt;strong&gt;Stop-Distanz&lt;/strong&gt;&lt;span&gt;|Entry − Stop|&lt;/span&gt;&lt;/div&gt;&lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+      &lt;div class=&quot;risk-node&quot;&gt;&lt;strong&gt;Stückzahl&lt;/strong&gt;&lt;span&gt;abrunden auf ganze Assets&lt;/span&gt;&lt;/div&gt;&lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+      &lt;div class=&quot;risk-node&quot;&gt;&lt;strong&gt;Bracket&lt;/strong&gt;&lt;span&gt;Parent + Stop-Loss + Take-Profit&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;viz-row legend-row&quot;&gt;&lt;span&gt;&lt;i class=&quot;legend-swatch bull-swatch&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Full Size: Faktor 1,00&lt;/span&gt;&lt;span&gt;&lt;i class=&quot;legend-swatch neutral-swatch&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Tier-3 Small Participation: Faktor 0,25&lt;/span&gt;&lt;span class=&quot;text-muted&quot;&gt;Stop und Ziel stammen aus Marktstruktur/Value-Akzeptanz oder einem definierten R-Multiple.&lt;/span&gt;&lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby=&quot;equity-heading&quot;&gt;
+    &lt;div class=&quot;section-head&quot;&gt;&lt;div&gt;&lt;h2 id=&quot;equity-heading&quot;&gt;Equity-Kurve der ausführbaren Baseline&lt;/h2&gt;&lt;span class=&quot;text-muted&quot;&gt;1.066 Journal-Trades · Start 10.000&amp;nbsp;$ · 2024-01-01 bis 2026-07-15&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;viz-badge&quot;&gt;+380,84&amp;nbsp;% auf Startkapital&lt;/span&gt;&lt;/div&gt;
+    &lt;div id=&quot;equity-chart-host&quot; class=&quot;chart-host&quot;&gt;&lt;div id=&quot;equity-tooltip&quot; class=&quot;tooltip&quot; role=&quot;status&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div id=&quot;equity-focus-line&quot; class=&quot;text-small text-muted&quot; aria-live=&quot;polite&quot;&gt;Start: 10.187,24&amp;nbsp;$ am 08.01.2024&lt;/div&gt;
+    &lt;div class=&quot;annual-strip&quot; aria-label=&quot;Jahresergebnisse&quot;&gt;&lt;span&gt;&lt;strong&gt;2024&lt;/strong&gt; · 400 Trades · +10.361,19&amp;nbsp;$&lt;/span&gt;&lt;span&gt;&lt;strong&gt;2025&lt;/strong&gt; · 477 Trades · +20.243,28&amp;nbsp;$&lt;/span&gt;&lt;span&gt;&lt;strong&gt;2026 YTD&lt;/strong&gt; · 189 Trades · +7.479,42&amp;nbsp;$&lt;/span&gt;&lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby=&quot;scope-heading&quot;&gt;
+    &lt;h2 id=&quot;scope-heading&quot;&gt;Gültigkeitsbereich und Grenzen&lt;/h2&gt;
+    &lt;div class=&quot;scope-grid&quot;&gt;
+      &lt;dl&gt;&lt;dt&gt;Version&lt;/dt&gt;&lt;dd&gt;&lt;code&gt;manual-regime-engine@1.0.0&lt;/code&gt;&lt;br&gt;&lt;code&gt;fixed-risk-per-trade@1.0.0&lt;/code&gt;&lt;/dd&gt;&lt;/dl&gt;
+      &lt;dl&gt;&lt;dt&gt;Identität&lt;/dt&gt;&lt;dd&gt;Engine SHA-256&lt;br&gt;&lt;code&gt;b94b8e1f4ca6…b349c6aa&lt;/code&gt;&lt;/dd&gt;&lt;/dl&gt;
+      &lt;dl&gt;&lt;dt&gt;Auswahl&lt;/dt&gt;&lt;dd&gt;50 Symbole · 318 freigegebene Symbol/Regel-Paare · SPX und SPX_FUT nicht routbar&lt;/dd&gt;&lt;/dl&gt;
+      &lt;dl&gt;&lt;dt&gt;Kausalität&lt;/dt&gt;&lt;dd&gt;Audit: kein harter Look-ahead gefunden; Vortagsdaten abgeschlossen, Intraday-Entscheidung am zweiten Balken.&lt;/dd&gt;&lt;/dl&gt;
+      &lt;dl&gt;&lt;dt&gt;Modell vs. Ausführung&lt;/dt&gt;&lt;dd&gt;1.109 Modelltrades einschließlich nicht routbarer Indizes; 1.066 ausführbare Trades in der gezeigten Kurve.&lt;/dd&gt;&lt;/dl&gt;
+      &lt;dl&gt;&lt;dt&gt;Kostenannahme&lt;/dt&gt;&lt;dd&gt;Gebührenmodell &lt;code&gt;zero@1.0.0&lt;/code&gt; · Slippage &lt;code&gt;zero@1.0.0&lt;/code&gt;. Reale Ergebnisse werden daher voraussichtlich niedriger sein.&lt;/dd&gt;&lt;/dl&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+#manual-regime-doc-v1{display:grid;gap:2.5rem;color:var(--foreground);width:100%;min-width:0}
+#manual-regime-doc-v1 .doc-head{display:grid;gap:1rem}
+#manual-regime-doc-v1 h2,#manual-regime-doc-v1 h3{margin:0}
+#manual-regime-doc-v1 section{display:grid;gap:1rem}
+#manual-regime-doc-v1 .headline-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+#manual-regime-doc-v1 .pipeline{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:.4rem;align-items:stretch}
+#manual-regime-doc-v1 .pipe-step{display:flex;flex-direction:column;gap:.45rem;padding:.75rem;background:color-mix(in srgb,var(--viz-series-1) 10%,transparent);border-inline-start:3px solid var(--viz-series-1)}
+#manual-regime-doc-v1 .pipe-step span{color:var(--muted-foreground)}
+#manual-regime-doc-v1 .pipe-arrow{align-self:center;color:var(--muted-foreground)}
+#manual-regime-doc-v1 .regime-map,#manual-regime-doc-v1 .pattern-chart,#manual-regime-doc-v1 .veto-timeline{display:block;width:100%;height:auto}
+#manual-regime-doc-v1 .regime-map text,#manual-regime-doc-v1 .pattern-chart text,#manual-regime-doc-v1 .veto-timeline text{fill:var(--foreground)}
+#manual-regime-doc-v1 .map-edge{fill:none;stroke:var(--border);stroke-width:2;color:var(--muted-foreground)}
+#manual-regime-doc-v1 .state rect{stroke:none}
+#manual-regime-doc-v1 .state.bull rect{fill:color-mix(in srgb,var(--viz-series-1) 18%,var(--background))}
+#manual-regime-doc-v1 .state.bear rect{fill:color-mix(in srgb,var(--viz-series-2) 18%,var(--background))}
+#manual-regime-doc-v1 .state.neutral rect{fill:var(--muted)}
+#manual-regime-doc-v1 .legend-row{justify-content:flex-start;gap:1rem}
+#manual-regime-doc-v1 .legend-row&gt;span{display:inline-flex;align-items:center;gap:.4rem}
+#manual-regime-doc-v1 .legend-swatch{display:inline-block;width:.8rem;height:.8rem;border-radius:50%}
+#manual-regime-doc-v1 .bull-swatch{background:var(--viz-series-1)}
+#manual-regime-doc-v1 .bear-swatch{background:var(--viz-series-2)}
+#manual-regime-doc-v1 .neutral-swatch{background:var(--muted-foreground)}
+#manual-regime-doc-v1 .pattern-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
+#manual-regime-doc-v1 .pattern{display:grid;gap:.75rem}
+#manual-regime-doc-v1 .pattern ul{margin:0;padding-inline-start:1.2rem;display:grid;gap:.35rem}
+#manual-regime-doc-v1 .grid-line{fill:none;stroke:var(--border);stroke-width:1}
+#manual-regime-doc-v1 .price{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+#manual-regime-doc-v1 .bull-line{stroke:var(--viz-series-1)}
+#manual-regime-doc-v1 .bear-line{stroke:var(--viz-series-2)}
+#manual-regime-doc-v1 .guide{fill:none;stroke:var(--muted-foreground);stroke-width:1.5}
+#manual-regime-doc-v1 .guide.dash{stroke-dasharray:5 4}
+#manual-regime-doc-v1 .entry-mark{fill:var(--viz-series-1)}
+#manual-regime-doc-v1 .short-mark{fill:var(--viz-series-2)}
+#manual-regime-doc-v1 .section-head{display:flex;justify-content:space-between;align-items:end;gap:1rem;flex-wrap:wrap}
+#manual-regime-doc-v1 .section-head&gt;div{display:grid;gap:.35rem}
+#manual-regime-doc-v1 .rule-table{width:100%;border-collapse:collapse}
+#manual-regime-doc-v1 .rule-table th,#manual-regime-doc-v1 .rule-table td{text-align:left;vertical-align:top;padding:.75rem .6rem;border-bottom:1px solid var(--border)}
+#manual-regime-doc-v1 .rule-table th{font-weight:500;color:var(--muted-foreground)}
+#manual-regime-doc-v1 .rule-title{display:grid;gap:.35rem}
+#manual-regime-doc-v1 .rule-meta{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
+#manual-regime-doc-v1 .status-dot{width:.65rem;height:.65rem;border-radius:50%;display:inline-block;background:var(--muted-foreground)}
+#manual-regime-doc-v1 .status-dot.active-long{background:var(--viz-series-1)}
+#manual-regime-doc-v1 .status-dot.active-short{background:var(--viz-series-2)}
+#manual-regime-doc-v1 .veto-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:1.5rem}
+#manual-regime-doc-v1 .veto-grid article{display:grid;gap:.75rem}
+#manual-regime-doc-v1 .logic-chain{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+#manual-regime-doc-v1 .logic-chain span{padding:.5rem .65rem;background:var(--muted);color:var(--foreground)}
+#manual-regime-doc-v1 .logic-chain .blocked{background:color-mix(in srgb,var(--destructive) 16%,var(--background))}
+#manual-regime-doc-v1 .veto-timeline .axis{stroke:var(--border);stroke-width:2}
+#manual-regime-doc-v1 .veto-timeline .window{fill:color-mix(in srgb,var(--viz-series-2) 8%,transparent);stroke:var(--border)}
+#manual-regime-doc-v1 .veto-timeline .loss-dot{fill:var(--viz-series-2)}
+#manual-regime-doc-v1 .veto-timeline .cut{stroke:var(--foreground);stroke-width:2}
+#manual-regime-doc-v1 .risk-flow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:.7rem;align-items:center}
+#manual-regime-doc-v1 .risk-node{display:grid;gap:.4rem;padding:.8rem;background:color-mix(in srgb,var(--viz-series-1) 9%,transparent);border-block-start:3px solid var(--viz-series-1)}
+#manual-regime-doc-v1 .risk-node span{color:var(--muted-foreground)}
+#manual-regime-doc-v1 .chart-host{position:relative;width:100%}
+#manual-regime-doc-v1 .chart-host svg{display:block;width:100%;height:auto}
+#manual-regime-doc-v1 .equity-grid{stroke:var(--border);stroke-width:1}
+#manual-regime-doc-v1 .equity-axis-label{fill:var(--muted-foreground)}
+#manual-regime-doc-v1 .equity-area{fill:color-mix(in srgb,var(--viz-series-1) 12%,transparent)}
+#manual-regime-doc-v1 .equity-line{fill:none;stroke:var(--viz-series-1);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+#manual-regime-doc-v1 .equity-marker{fill:var(--viz-series-1)}
+#manual-regime-doc-v1 .dd-marker{fill:var(--viz-series-2)}
+#manual-regime-doc-v1 .equity-annotation{fill:var(--foreground)}
+#manual-regime-doc-v1 #equity-tooltip{position:absolute;visibility:hidden;pointer-events:none}
+#manual-regime-doc-v1 .annual-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
+#manual-regime-doc-v1 .annual-strip span{padding:.65rem;border-block-start:2px solid var(--border)}
+#manual-regime-doc-v1 .scope-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+#manual-regime-doc-v1 .scope-grid dl{margin:0;display:grid;gap:.35rem}
+#manual-regime-doc-v1 .scope-grid dt{font-weight:500}
+#manual-regime-doc-v1 .scope-grid dd{margin:0;color:var(--muted-foreground)}
+@media(max-width:900px){
+  #manual-regime-doc-v1 .pipeline,#manual-regime-doc-v1 .risk-flow{grid-template-columns:1fr}
+  #manual-regime-doc-v1 .pipe-arrow,#manual-regime-doc-v1 .risk-flow&gt;span{transform:rotate(90deg);justify-self:center}
+}
+@media(max-width:700px){
+  #manual-regime-doc-v1 .headline-stats,#manual-regime-doc-v1 .pattern-grid,#manual-regime-doc-v1 .veto-grid,#manual-regime-doc-v1 .scope-grid{grid-template-columns:1fr}
+  #manual-regime-doc-v1 .annual-strip{grid-template-columns:1fr}
+  #manual-regime-doc-v1 .rule-table,#manual-regime-doc-v1 .rule-table tbody,#manual-regime-doc-v1 .rule-table tr,#manual-regime-doc-v1 .rule-table td{display:block;width:100%}
+  #manual-regime-doc-v1 .rule-table thead{display:none}
+  #manual-regime-doc-v1 .rule-table td{box-sizing:border-box;display:grid;gap:.25rem}
+  #manual-regime-doc-v1 .rule-table td::before{content:attr(data-label);font-weight:500;color:var(--muted-foreground)}
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+(() =&gt; {
+  const root = document.getElementById(&#x27;manual-regime-doc-v1&#x27;);
+  if (!root) return;
+  const rules = [
+    {side:&#x27;long&#x27;,status:&#x27;active&#x27;,pairs:47,id:&#x27;bullish_crash_repair_reversal_long&#x27;,trigger:&#x27;Crash-Reparatur in bearish_confirmed/countermove; bestätigter Reversal-Aufbau.&#x27;,risk:&#x27;Stop unter Reparaturtief · Ziel 1R · Größe 1,00&#x27;,trades:135,wr:68.15,pnl:4650.07,pf:2.18},
+    {side:&#x27;long&#x27;,status:&#x27;active&#x27;,pairs:21,id:&#x27;bullish_post_bear_bull_reentry_long&#x27;,trigger:&#x27;Tier 3 nach bearish: 3–15 Tage, ≥5 HH, ≥3 HL, Wochen-Rebuild, Drawdown-Tiefe ≥4 ATR.&#x27;,risk:&#x27;Stop am nächsten gültigen Support · Ziel 1R · Größe 1,00&#x27;,trades:49,wr:69.39,pnl:1767.12,pf:2.24},
+    {side:&#x27;long&#x27;,status:&#x27;catalog&#x27;,pairs:0,id:&#x27;bullish_repair_range_breakout&#x27;,trigger:&#x27;Tier 1/2, Widerstandsbruch nach Reparatur, keine bärische Strukturschädigung.&#x27;,risk:&#x27;Stop jüngstes Tief · Struktur-/Akzeptanzziel · CRV ≥0,90&#x27;,trades:0,wr:null,pnl:0,pf:null},
+    {side:&#x27;long&#x27;,status:&#x27;active&#x27;,pairs:15,id:&#x27;bullish_pullback_reclaim_long&#x27;,trigger:&#x27;Bullisches Regime, gebrochenes Niveau zurückerobert, strukturelles höheres Tief.&#x27;,risk:&#x27;Stop unter Support · Struktur-/Akzeptanzziel · CRV ≥1,00&#x27;,trades:21,wr:33.33,pnl:102.97,pf:1.07},
+    {side:&#x27;long&#x27;,status:&#x27;active&#x27;,pairs:12,id:&#x27;bullish_pullback_confirmed_higher_low&#x27;,trigger:&#x27;Bullisches Regime; Entscheidung über Bestätigungshoch nach Pullback-Tief.&#x27;,risk:&#x27;Stop unter Pullback-Tief · Struktur-/Akzeptanzziel · CRV ≥1,00&#x27;,trades:18,wr:55.56,pnl:1267.51,pf:2.66},
+    {side:&#x27;long&#x27;,status:&#x27;active&#x27;,pairs:38,id:&#x27;bullish_add_on_higher_low&#x27;,trigger:&#x27;Bestehender Full-Size-Long, frischer Pullback-Anker, bullischer Reclaim.&#x27;,risk:&#x27;Stop unter neuem Anker · Strukturziel ≥1R · zusätzliche Größe 1,00&#x27;,trades:148,wr:92.57,pnl:13939.96,pf:14.91},
+    {side:&#x27;long&#x27;,status:&#x27;catalog&#x27;,pairs:0,id:&#x27;bullish_stair_step_weekly_green_streak_combo&#x27;,trigger:&#x27;Tier 2/3 + Breakout + Treppenstruktur und starker 8-Wochen-Ramp.&#x27;,risk:&#x27;Stop unter Struktur · Ziel 1R · Größe 1,00&#x27;,trades:0,wr:null,pnl:0,pf:null},
+    {side:&#x27;long&#x27;,status:&#x27;catalog&#x27;,pairs:0,id:&#x27;bullish_weekly_green_streak_continuation&#x27;,trigger:&#x27;Tier 2/3 + Breakout; 8 Wochen, davon ≥7 grün und ≤1 rot.&#x27;,risk:&#x27;Stop unter Struktur · Ziel 1R · Größe 1,00&#x27;,trades:0,wr:null,pnl:0,pf:null},
+    {side:&#x27;long&#x27;,status:&#x27;catalog&#x27;,pairs:0,id:&#x27;bullish_stair_step_continuation&#x27;,trigger:&#x27;Tier 2/3 + Breakout; ≥3 höhere Hochs und ≥2 höhere Tiefs.&#x27;,risk:&#x27;Stop unter Struktur · Ziel 1R · Größe 1,00&#x27;,trades:0,wr:null,pnl:0,pf:null},
+    {side:&#x27;long&#x27;,status:&#x27;catalog&#x27;,pairs:0,id:&#x27;bullish_stair_step_weekly_green_streak_continuation&#x27;,trigger:&#x27;Tier 2/3 + Breakout; Treppen- oder Wochenbedingung im Both-Modus.&#x27;,risk:&#x27;Stop unter Struktur · Ziel 1R · Größe 1,00&#x27;,trades:0,wr:null,pnl:0,pf:null},
+    {side:&#x27;long&#x27;,status:&#x27;active&#x27;,pairs:23,id:&#x27;bullish_tier3_projected_high_continuation_long&#x27;,trigger:&#x27;Tier 3, ≥6 HH/≥5 HL; kleiner Hoch-Schritt ≤0,5 ATR, Bruch des projizierten Hochs.&#x27;,risk:&#x27;Stop unter strukturellem Tief · Ziel 1R · Größe 1,00&#x27;,trades:29,wr:72.41,pnl:1139.84,pf:2.61},
+    {side:&#x27;long&#x27;,status:&#x27;active&#x27;,pairs:23,id:&#x27;bullish_tier3_full_trend_participation_breakout&#x27;,trigger:&#x27;Reifer Tier-3-Breakout, frisches HL, keine Late-Bull-Kompression, ≥6 HH/≥5 HL.&#x27;,risk:&#x27;Stop unter jüngstem Tief · Ziel 1R · Größe 1,00&#x27;,trades:43,wr:72.09,pnl:1728.74,pf:2.55},
+    {side:&#x27;long&#x27;,status:&#x27;active&#x27;,pairs:17,id:&#x27;bullish_tier3_small_participation_breakout&#x27;,trigger:&#x27;Tier-3-Breakout mit frischem HL; weniger stark oder Late-Bull-Kompression.&#x27;,risk:&#x27;Stop unter jüngstem Tief · Ziel 1R · Größe 0,25&#x27;,trades:23,wr:47.83,pnl:-8.37,pf:0.97},
+    {side:&#x27;short&#x27;,status:&#x27;active&#x27;,pairs:43,id:&#x27;bearish_lower_high_failure_short&#x27;,trigger:&#x27;Bearish armed; Bounce bildet tieferes Hoch und Entscheidung scheitert ≥0,15 ATR darunter.&#x27;,risk:&#x27;Stop über Vortagshoch · Supportziel ≥0,75R, sonst 1R · LHF-Cluster-Veto&#x27;,trades:248,wr:56.85,pnl:3931.86,pf:1.39},
+    {side:&#x27;short&#x27;,status:&#x27;active&#x27;,pairs:41,id:&#x27;bearish_gap_breakdown_continuation_short&#x27;,trigger:&#x27;bearish_confirmed, Supportbruch, tiefere Tiefs, Entscheidung unter jüngstem Tief, kein Retest.&#x27;,risk:&#x27;Stop über Vortagshoch · Supportziel ≥0,90R, sonst 1R&#x27;,trades:255,wr:54.51,pnl:7250.03,pf:1.66},
+    {side:&#x27;short&#x27;,status:&#x27;active&#x27;,pairs:38,id:&#x27;bearish_failed_countermove_short_baseline&#x27;,trigger:&#x27;Reifer Bruch ≥3 Balken; Entscheidung und Vortagesschluss unter Gegenbewegungs-Hoch.&#x27;,risk:&#x27;Stop über Fail-Zone · nächster Support bei CRV ≥1,00 · Weak-Retest-Veto&#x27;,trades:97,wr:42.27,pnl:2314.18,pf:1.42}
+  ];
+  const tbody = root.querySelector(&#x27;#rule-table-body&#x27;);
+  const count = root.querySelector(&#x27;#rule-count&#x27;);
+  const eur = new Intl.NumberFormat(&#x27;de-DE&#x27;,{minimumFractionDigits:2,maximumFractionDigits:2});
+  function renderRules(filter){
+    const shown = rules.filter(r =&gt; filter === &#x27;all&#x27; || (filter === &#x27;catalog&#x27; &amp;&amp; r.status === &#x27;catalog&#x27;) || (filter === r.side &amp;&amp; r.status === &#x27;active&#x27;));
+    tbody.replaceChildren();
+    shown.forEach(r =&gt; {
+      const tr = document.createElement(&#x27;tr&#x27;);
+      const statusText = r.status === &#x27;active&#x27; ? `aktiv · ${r.pairs} Paare` : &#x27;nur Katalog&#x27;;
+      const stats = r.trades ? `${r.trades} Trades · ${eur.format(r.wr)} % Treffer · ${r.pnl &gt;= 0 ? &#x27;+&#x27; : &#x27;&#x27;}${eur.format(r.pnl)} $ · PF ${eur.format(r.pf)}` : &#x27;0 freigegebene Paare · keine Trades in dieser Baseline&#x27;;
+      const values = [
+        `&lt;div class=&quot;rule-title&quot;&gt;&lt;code&gt;${r.id}&lt;/code&gt;&lt;span class=&quot;rule-meta&quot;&gt;&lt;i class=&quot;status-dot ${r.status === &#x27;active&#x27; ? `active-${r.side}` : &#x27;&#x27;}&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;${statusText}&lt;/span&gt;&lt;/div&gt;`,
+        r.trigger,
+        r.risk,
+        stats
+      ];
+      const labels = [&#x27;Status / Regel&#x27;,&#x27;Kernauslöser&#x27;,&#x27;Schutz &amp; Ziel&#x27;,&#x27;Backtest bis 15.07.2026&#x27;];
+      values.forEach((value,index) =&gt; { const td=document.createElement(&#x27;td&#x27;); td.dataset.label=labels[index]; td.innerHTML=value; tr.appendChild(td); });
+      tbody.appendChild(tr);
+    });
+    count.textContent = `${shown.length} von 16 Regeln`;
+  }
+  root.querySelectorAll(&#x27;[data-rule-filter]&#x27;).forEach(button =&gt; {
+    button.addEventListener(&#x27;click&#x27;,() =&gt; {
+      root.querySelectorAll(&#x27;[data-rule-filter]&#x27;).forEach(peer =&gt; { peer.setAttribute(&#x27;aria-pressed&#x27;,&#x27;false&#x27;); peer.classList.remove(&#x27;btn-primary&#x27;); });
+      button.setAttribute(&#x27;aria-pressed&#x27;,&#x27;true&#x27;); button.classList.add(&#x27;btn-primary&#x27;); renderRules(button.dataset.ruleFilter);
+    });
+  });
+  renderRules(&#x27;all&#x27;);
+
+  const equity = [[&quot;2024-01-08&quot;,10187.24,0],[&quot;2024-01-12&quot;,11006.66,0],[&quot;2024-01-19&quot;,11784.8,0],[&quot;2024-01-25&quot;,11682.61,-202.01],[&quot;2024-01-30&quot;,12050.34,0],[&quot;2024-02-02&quot;,12334.41,-2.15],[&quot;2024-02-05&quot;,12806.8,0],[&quot;2024-02-08&quot;,12526.54,-395.87],[&quot;2024-02-13&quot;,12428.3,-494.1],[&quot;2024-02-15&quot;,12149.68,-772.72],[&quot;2024-02-23&quot;,12263.44,-658.96],[&quot;2024-02-28&quot;,12676.49,-245.91],[&quot;2024-03-04&quot;,12958.12,0],[&quot;2024-03-07&quot;,13356.13,0],[&quot;2024-03-14&quot;,13416.79,-23.04],[&quot;2024-03-18&quot;,13274.16,-265.79],[&quot;2024-03-21&quot;,13789.47,0],[&quot;2024-03-25&quot;,13609.75,-179.72],[&quot;2024-04-04&quot;,13309.64,-479.83],[&quot;2024-04-09&quot;,13489.09,-300.38],[&quot;2024-04-15&quot;,14011.28,0],[&quot;2024-04-15&quot;,14305.3,0],[&quot;2024-04-17&quot;,14804.35,0],[&quot;2024-04-19&quot;,15061.53,-97.89],[&quot;2024-04-23&quot;,15506.43,-384.25],[&quot;2024-04-25&quot;,15568.92,-321.76],[&quot;2024-04-26&quot;,15430.2,-460.48],[&quot;2024-04-30&quot;,15124.07,-766.61],[&quot;2024-05-03&quot;,15312.85,-577.83],[&quot;2024-05-10&quot;,15211.5,-679.18],[&quot;2024-05-14&quot;,15131.54,-759.15],[&quot;2024-05-15&quot;,15424.22,-466.47],[&quot;2024-05-16&quot;,16119.36,0],[&quot;2024-05-23&quot;,16070.73,-168.83],[&quot;2024-05-30&quot;,16041.28,-198.29],[&quot;2024-06-05&quot;,15789.63,-449.93],[&quot;2024-06-06&quot;,15506.51,-733.05],[&quot;2024-06-10&quot;,15192.66,-1046.9],[&quot;2024-06-12&quot;,15702.1,-537.46],[&quot;2024-06-14&quot;,15767.77,-471.79],[&quot;2024-06-20&quot;,15554.11,-685.45],[&quot;2024-06-25&quot;,16104.35,-135.21],[&quot;2024-06-28&quot;,15998.34,-241.22],[&quot;2024-07-09&quot;,16323.91,0],[&quot;2024-07-11&quot;,16074.49,-322.92],[&quot;2024-07-16&quot;,16174.18,-223.23],[&quot;2024-07-23&quot;,16133.27,-264.14],[&quot;2024-07-24&quot;,16354.92,-42.49],[&quot;2024-07-30&quot;,16854.06,0],[&quot;2024-08-02&quot;,16914.71,0],[&quot;2024-08-05&quot;,17000.76,-121.98],[&quot;2024-08-13&quot;,17116.18,-198.65],[&quot;2024-08-27&quot;,17019.32,-295.51],[&quot;2024-09-03&quot;,17352.02,-89.31],[&quot;2024-09-03&quot;,17479.14,0],[&quot;2024-09-06&quot;,17928.14,0],[&quot;2024-09-10&quot;,17815.02,-113.12],[&quot;2024-09-13&quot;,17915.15,-13.63],[&quot;2024-09-19&quot;,18227.77,-11.91],[&quot;2024-09-26&quot;,18671.35,0],[&quot;2024-09-27&quot;,18738.91,-6.7],[&quot;2024-10-04&quot;,19016.62,0],[&quot;2024-10-08&quot;,19004.05,-12.57],[&quot;2024-10-10&quot;,18839.98,-287],[&quot;2024-10-15&quot;,18937.15,-189.83],[&quot;2024-10-16&quot;,18993.07,-133.91],[&quot;2024-10-21&quot;,19236.5,0],[&quot;2024-10-29&quot;,18939.01,-297.49],[&quot;2024-10-31&quot;,18940.52,-295.98],[&quot;2024-11-04&quot;,18880.28,-356.22],[&quot;2024-11-11&quot;,18730.13,-506.37],[&quot;2024-11-19&quot;,18620.13,-616.38],[&quot;2024-11-21&quot;,18303.61,-932.89],[&quot;2024-11-25&quot;,18280.48,-956.02],[&quot;2024-12-05&quot;,18463.18,-773.33],[&quot;2024-12-11&quot;,18858.57,-377.93],[&quot;2024-12-17&quot;,19282.47,0],[&quot;2024-12-18&quot;,19677.63,0],[&quot;2024-12-20&quot;,20112.33,0],[&quot;2024-12-27&quot;,20176.62,-127.52],[&quot;2025-01-02&quot;,20261.91,-99.28],[&quot;2025-01-03&quot;,20354.51,-195.79],[&quot;2025-01-07&quot;,20223.26,-327.03],[&quot;2025-01-10&quot;,21019.38,0],[&quot;2025-01-15&quot;,20891.14,-293.22],[&quot;2025-01-16&quot;,20603.54,-580.82],[&quot;2025-01-17&quot;,20317.15,-867.21],[&quot;2025-01-24&quot;,20146.45,-1037.91],[&quot;2025-01-24&quot;,20049.92,-1134.44],[&quot;2025-01-30&quot;,20213.83,-970.53],[&quot;2025-02-05&quot;,20482.8,-701.56],[&quot;2025-02-12&quot;,20347.21,-837.15],[&quot;2025-02-25&quot;,20418.23,-766.13],[&quot;2025-03-04&quot;,20780.53,-403.83],[&quot;2025-03-07&quot;,21068.84,-115.52],[&quot;2025-03-11&quot;,21486.73,0],[&quot;2025-03-13&quot;,21793.27,0],[&quot;2025-03-18&quot;,21690.08,-193.91],[&quot;2025-03-26&quot;,21428.19,-455.8],[&quot;2025-03-28&quot;,21685.14,-198.85],[&quot;2025-04-03&quot;,22021.11,0],[&quot;2025-04-09&quot;,22018.05,-84.8],[&quot;2025-04-16&quot;,22312.42,0],[&quot;2025-04-24&quot;,22401.77,-188.37],[&quot;2025-04-30&quot;,22508.14,-82],[&quot;2025-05-08&quot;,22736.43,0],[&quot;2025-05-09&quot;,23084.57,0],[&quot;2025-05-12&quot;,23554.27,0],[&quot;2025-05-13&quot;,23845.22,0],[&quot;2025-05-14&quot;,24318.02,0],[&quot;2025-05-19&quot;,24610.77,0],[&quot;2025-05-23&quot;,24740.99,0],[&quot;2025-05-29&quot;,25129.48,0],[&quot;2025-06-05&quot;,25788.97,0],[&quot;2025-06-11&quot;,26296.68,0],[&quot;2025-06-13&quot;,26390.66,-183.09],[&quot;2025-06-17&quot;,26685.8,-0.2],[&quot;2025-06-24&quot;,27366.87,0],[&quot;2025-06-26&quot;,27432.64,-130.09],[&quot;2025-06-27&quot;,27899.58,0],[&quot;2025-06-30&quot;,28300.17,0],[&quot;2025-07-01&quot;,28847.96,0],[&quot;2025-07-01&quot;,29335.83,0],[&quot;2025-07-02&quot;,29636.15,0],[&quot;2025-07-03&quot;,30132.67,0],[&quot;2025-07-08&quot;,30526.1,0],[&quot;2025-07-10&quot;,30880.35,0],[&quot;2025-07-16&quot;,31191,-96.34],[&quot;2025-07-21&quot;,31631.9,0],[&quot;2025-07-23&quot;,32178.54,0],[&quot;2025-07-25&quot;,32524.09,0],[&quot;2025-07-28&quot;,32989.86,0],[&quot;2025-07-31&quot;,33376.01,0],[&quot;2025-08-01&quot;,33442.37,-90.14],[&quot;2025-08-06&quot;,33947.37,0],[&quot;2025-08-08&quot;,34192.55,-92.98],[&quot;2025-08-12&quot;,34526.27,0],[&quot;2025-08-19&quot;,34644.18,-3.74],[&quot;2025-08-20&quot;,34411.63,-236.29],[&quot;2025-08-22&quot;,35251.05,0],[&quot;2025-08-22&quot;,35168.53,-178.46],[&quot;2025-08-29&quot;,35324.08,-22.91],[&quot;2025-09-02&quot;,35301.31,-184.01],[&quot;2025-09-04&quot;,35368.28,-193.86],[&quot;2025-09-08&quot;,35091.01,-471.13],[&quot;2025-09-09&quot;,35194.74,-367.4],[&quot;2025-09-10&quot;,34722.55,-839.59],[&quot;2025-09-11&quot;,34781.92,-780.22],[&quot;2025-09-16&quot;,35272.51,-289.63],[&quot;2025-09-18&quot;,35531.75,-30.39],[&quot;2025-09-22&quot;,35438.44,-186.97],[&quot;2025-09-24&quot;,35791.24,-99.7],[&quot;2025-09-30&quot;,35956.44,-51.06],[&quot;2025-10-02&quot;,36353.68,-96.21],[&quot;2025-10-06&quot;,36464.05,0],[&quot;2025-10-07&quot;,36810.19,0],[&quot;2025-10-10&quot;,37185.08,0],[&quot;2025-10-16&quot;,37265.81,0],[&quot;2025-10-20&quot;,37634.78,0],[&quot;2025-10-22&quot;,37779.33,-0.3],[&quot;2025-10-24&quot;,37871.12,-188.4],[&quot;2025-10-28&quot;,38400.01,0],[&quot;2025-10-30&quot;,38844.57,0],[&quot;2025-11-04&quot;,39182.65,0],[&quot;2025-11-07&quot;,39366.02,0],[&quot;2025-11-10&quot;,39282.52,-274.78],[&quot;2025-11-13&quot;,39500.96,-56.34],[&quot;2025-11-17&quot;,40062.92,0],[&quot;2025-11-21&quot;,39946.28,-296.42],[&quot;2025-11-26&quot;,39671.5,-571.21],[&quot;2025-12-04&quot;,40405.48,0],[&quot;2025-12-09&quot;,40525.11,0],[&quot;2025-12-10&quot;,40460.92,-183.54],[&quot;2025-12-11&quot;,40587.58,-56.88],[&quot;2025-12-16&quot;,40304.23,-340.23],[&quot;2025-12-17&quot;,40894.76,0],[&quot;2025-12-29&quot;,40686.4,-290.19],[&quot;2026-01-06&quot;,40614.95,-361.64],[&quot;2026-01-12&quot;,40706.04,-270.54],[&quot;2026-01-13&quot;,41015.09,0],[&quot;2026-01-20&quot;,41130.09,-94.78],[&quot;2026-01-23&quot;,41277.51,-21.78],[&quot;2026-01-30&quot;,40996.85,-302.44],[&quot;2026-02-06&quot;,40954.22,-345.06],[&quot;2026-02-12&quot;,40974.43,-324.85],[&quot;2026-02-26&quot;,41288.08,-11.2],[&quot;2026-03-03&quot;,41588.49,-91.7],[&quot;2026-03-11&quot;,41533.75,-146.44],[&quot;2026-03-12&quot;,42132.08,0],[&quot;2026-03-17&quot;,42244.92,0],[&quot;2026-03-19&quot;,42116.9,-220.84],[&quot;2026-03-24&quot;,42423.2,-4.53],[&quot;2026-03-25&quot;,42340.88,-99.12],[&quot;2026-03-27&quot;,42754.33,0],[&quot;2026-03-27&quot;,43030.69,0],[&quot;2026-03-31&quot;,43803.19,-93.96],[&quot;2026-04-06&quot;,43516.56,-380.6],[&quot;2026-04-08&quot;,43449.59,-447.56],[&quot;2026-04-09&quot;,43176.68,-720.47],[&quot;2026-04-14&quot;,43273.73,-623.42],[&quot;2026-04-17&quot;,43544.71,-352.44],[&quot;2026-04-22&quot;,43574.94,-322.21],[&quot;2026-04-27&quot;,44157.69,0],[&quot;2026-05-05&quot;,44440.8,-99.95],[&quot;2026-05-06&quot;,44720.58,0],[&quot;2026-05-08&quot;,46299.96,0],[&quot;2026-05-12&quot;,46921.65,0],[&quot;2026-05-18&quot;,47075.21,-199.03],[&quot;2026-05-29&quot;,46782.29,-491.95],[&quot;2026-06-09&quot;,46503.38,-770.85],[&quot;2026-06-18&quot;,46691.16,-583.08],[&quot;2026-06-24&quot;,46698.04,-576.19],[&quot;2026-07-06&quot;,46447.75,-826.48],[&quot;2026-07-15&quot;,47929.35,0],[&quot;2026-07-15&quot;,48083.89,0]];
+  const host = root.querySelector(&#x27;#equity-chart-host&#x27;);
+  const tip = root.querySelector(&#x27;#equity-tooltip&#x27;);
+  const focus = root.querySelector(&#x27;#equity-focus-line&#x27;);
+  const NS=&#x27;http://www.w3.org/2000/svg&#x27;;
+  const svg=document.createElementNS(NS,&#x27;svg&#x27;); svg.setAttribute(&#x27;viewBox&#x27;,&#x27;0 0 700 310&#x27;); svg.setAttribute(&#x27;role&#x27;,&#x27;img&#x27;); svg.setAttribute(&#x27;aria-label&#x27;,&#x27;Equity steigt von rund 10.000 Dollar Anfang 2024 auf 48.083,89 Dollar am 15. Juli 2026. Der maximale Drawdown beträgt 1.134,44 Dollar im Januar 2025.&#x27;);
+  const times=equity.map(d=&gt;Date.parse(`${d[0]}T00:00:00Z`)), vals=equity.map(d=&gt;d[1]);
+  const minT=Math.min(...times),maxT=Math.max(...times),minV=9000,maxV=50000,left=58,right=680,top=20,bottom=260;
+  const x=t=&gt;left+(t-minT)/(maxT-minT)*(right-left), y=v=&gt;bottom-(v-minV)/(maxV-minV)*(bottom-top);
+  const add=(name,attrs,parent=svg)=&gt;{const el=document.createElementNS(NS,name);Object.entries(attrs).forEach(([k,v])=&gt;el.setAttribute(k,String(v)));parent.appendChild(el);return el;};
+  [10000,20000,30000,40000,50000].forEach(v=&gt;{add(&#x27;path&#x27;,{d:`M${left} ${y(v)} H${right}`,class:&#x27;equity-grid&#x27;});const t=add(&#x27;text&#x27;,{x:left-8,y:y(v)+4,&#x27;text-anchor&#x27;:&#x27;end&#x27;,class:&#x27;equity-axis-label&#x27;});t.textContent=`${Math.round(v/1000)}k`;});
+  [[&#x27;2024-01-01&#x27;,&#x27;2024&#x27;],[&#x27;2025-01-01&#x27;,&#x27;2025&#x27;],[&#x27;2026-01-01&#x27;,&#x27;2026&#x27;],[&#x27;2026-07-15&#x27;,&#x27;Jul 26&#x27;]].forEach(([date,label])=&gt;{const xx=x(Date.parse(`${date}T00:00:00Z`));add(&#x27;path&#x27;,{d:`M${xx} ${top} V${bottom}`,class:&#x27;equity-grid&#x27;});const t=add(&#x27;text&#x27;,{x:xx,y:bottom+23,&#x27;text-anchor&#x27;:&#x27;middle&#x27;,class:&#x27;equity-axis-label&#x27;});t.textContent=label;});
+  const pts=equity.map((d,i)=&gt;[x(times[i]),y(d[1])]);
+  const line=pts.map((p,i)=&gt;`${i?&#x27;L&#x27;:&#x27;M&#x27;}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(&#x27; &#x27;);
+  const area=`${line} L${pts.at(-1)[0].toFixed(1)} ${bottom} L${pts[0][0].toFixed(1)} ${bottom} Z`;
+  add(&#x27;path&#x27;,{d:area,class:&#x27;equity-area&#x27;}); add(&#x27;path&#x27;,{d:line,class:&#x27;equity-line&#x27;});
+  const ddIndex=equity.reduce((best,d,i)=&gt;d[2]&lt;equity[best][2]?i:best,0); const dd=pts[ddIndex];
+  add(&#x27;circle&#x27;,{cx:dd[0],cy:dd[1],r:5,class:&#x27;dd-marker&#x27;}); let txt=add(&#x27;text&#x27;,{x:dd[0]+8,y:dd[1]+18,class:&#x27;equity-annotation&#x27;}); txt.textContent=&#x27;Max. DD −1.134 $&#x27;;
+  const end=pts.at(-1); add(&#x27;circle&#x27;,{cx:end[0],cy:end[1],r:5,class:&#x27;equity-marker&#x27;}); txt=add(&#x27;text&#x27;,{x:end[0]-8,y:end[1]-10,&#x27;text-anchor&#x27;:&#x27;end&#x27;,class:&#x27;equity-annotation&#x27;}); txt.textContent=&#x27;48.083,89 $&#x27;;
+  host.prepend(svg);
+  const fmt=new Intl.NumberFormat(&#x27;de-DE&#x27;,{minimumFractionDigits:2,maximumFractionDigits:2});
+  svg.addEventListener(&#x27;pointermove&#x27;,event=&gt;{const rect=svg.getBoundingClientRect();const local=(event.clientX-rect.left)/rect.width*700;let best=0,dist=Infinity;pts.forEach((p,i)=&gt;{const d=Math.abs(p[0]-local);if(d&lt;dist){dist=d;best=i;}});const row=equity[best];tip.textContent=`${row[0]} · Equity ${fmt.format(row[1])} $ · DD ${fmt.format(row[2])} $`;tip.style.visibility=&#x27;visible&#x27;;const rawLeft=pts[best][0]/700*rect.width;const maxLeft=Math.max(0,rect.width-tip.offsetWidth);tip.style.left=`${Math.min(maxLeft,Math.max(0,rawLeft-tip.offsetWidth/2))}px`;tip.style.top=`${Math.max(0,pts[best][1]/310*rect.height-tip.offsetHeight-8)}px`;focus.textContent=tip.textContent;});
+  svg.addEventListener(&#x27;pointerleave&#x27;,()=&gt;{tip.style.visibility=&#x27;hidden&#x27;;});
+})();
+&lt;/script&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</body>
+</html>

@@ -1,0 +1,1076 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-17",
+  "registry_role": "Descriptive only. This file is not imported by live or order-routing code.",
+  "trade_intent_contract_v1": {
+    "required_fields": [
+      "symbol",
+      "track",
+      "rule",
+      "side",
+      "entry_date",
+      "entry_or_entry_price",
+      "stop",
+      "target"
+    ],
+    "optional_fields": [
+      "exit_date",
+      "size",
+      "regime_metadata",
+      "strategy_version"
+    ],
+    "money_management_consumer": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\risk\\money_manager.py",
+    "execution_consumer": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\execution\\ib_order_executor.py"
+  },
+  "strategies": [
+    {
+      "strategy_id": "multi-asset-manual-regime-top50",
+      "parent_strategy_id": null,
+      "display_name": "Multi-Asset Daily Regime / Top50 Core",
+      "family": "multi_asset_equity_regime",
+      "lifecycle_stage": "paper_trading",
+      "work_state": "monitoring",
+      "priority": "primary",
+      "current_summary": "Die Research-Baseline ist nach OOS-, TopN- und No-Leak-Pruefungen eingefroren. Der operative TWS-Pfad hat ueber zwei Paper-Versionen 25 Trade-Datensaetze, 46 Execution-Zeilen und 17 abgeschlossene Trades mit realisiertem P/L erzeugt. Die Strategie ist der einzige aktuelle Kandidat fuer einen eng begrenzten Live-Pilot, bleibt bis zur dokumentierten Abschlussfreigabe aber formal Paper-Trading.",
+      "hypothesis": "Regime- und strukturabhaengige Long-/Short-Regeln auf einem selektierten Multi-Asset-Universum erzeugen nach kausalen Filtern einen robusten Daily-Edge.",
+      "research_root": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03",
+      "primary_source": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\current_research_snapshot_2026_07_04.md",
+      "engine_entrypoint": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\manual_regime_bot_api.py",
+      "backtest_entrypoint": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\manual_regime_rules_backtest.py",
+      "evidence_metrics": [
+        "Striktes OOS nach Entry-Datum positiv",
+        "TopN 30 bis 100 robust",
+        "No-Leak-Audit ohne dokumentierten harten Look-ahead",
+        "Top50/Top100 Damage-Cluster-Validierung dokumentiert"
+      ],
+      "validation": {
+        "no_lookahead": "reviewed",
+        "out_of_sample": "reviewed",
+        "costs_slippage": "partial",
+        "independent_verification": "partial"
+      },
+      "money_management": {
+        "status": "implemented_but_two_paths",
+        "config_ref": "D:\\PycharmProjects\\IBKR_TradingBot\\configs\\money_management_v1.json",
+        "open_issue": "Operativer Runner nutzt teilweise eigenes Sizing; der generische MoneyManagementBlock muss als verbindlicher Pfad entschieden werden."
+      },
+      "ibkr_integration": {
+        "status": "integration_tested",
+        "adapter_ref": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\bot\\live_trade_probe.py",
+        "dry_run_verified": true,
+        "paper_verified": true,
+        "production_runner": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\live_manual_regime_tws_bot.py",
+        "order_gate": "--place-orders"
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "artifact_verified",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\multi-asset-manual-regime-top50.md",
+        "last_audited": "2026-07-14"
+      },
+      "production_eligible": false,
+      "next_action": "Die aktuelle Cluster-/Sizing-Version gegen Backtest und TWS-Ausfuehrungen reconciliieren, Gap-through-Stop und konservative Slippage dokumentieren sowie Risiko-Limits, Kill-Switch und konkrete Versionsfreigabe fuer einen kleinen Live-Pilot festhalten.",
+      "last_updated": "2026-08-16"
+    },
+    {
+      "strategy_id": "multi-stock-ivr70-put-credit",
+      "parent_strategy_id": null,
+      "display_name": "Multi-Stock IVR70 Put-Credit",
+      "family": "multi_asset_single_stock_options_credit",
+      "lifecycle_stage": "bot_integration",
+      "work_state": "frozen_candidate",
+      "priority": "secondary",
+      "current_summary": "Die Bugfix-Version 1.0.1 des kausalen IVR-Cross-ueber-70-Kandidaten mit 35-50 DTE, Delta-Ziel 0,19 innerhalb 0,16-0,22 und 10-Punkte-Breite ist als separat schaltbare zweite Paper-Optionsstrategie integriert. Sie qualifiziert echte Leg-Paare und journalisiert DTE-, Earnings-, Delta-, Credit- und Datenfehler getrennt. Der gemeinsame Options-Risikodeckel betraegt im Standardmodell 2.500 USD. Historische Preise und IVR bleiben Proxy-Werte; echte Paper-Fills fehlen.",
+      "hypothesis": "Nach einem kausalen Sprung des aktienspezifischen Volatilitaetsrangs ueber 70 kann ein earningsfreier Put-Credit-Spread die nachfolgende Volatilitaetsnormalisierung mit definiertem Risiko monetarisieren.",
+      "research_root": "D:\\Trading\\research\\single_stock_drawdown_recovery_put_credit",
+      "primary_source": "D:\\Trading\\research\\single_stock_drawdown_recovery_put_credit\\high_ivr_portfolio_25k_risk10_analysis_v1\\ANALYSIS.md",
+      "engine_entrypoint": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\live_manual_regime_tws_bot.py --enable-stock-ivr70-put-credit",
+      "backtest_entrypoint": "D:\\PycharmProjects\\PythonProject\\research\\simulate_high_ivr_portfolio_risk_cap.py",
+      "evidence_metrics": [
+        "174 Trades 2021 bis 20.07.2026",
+        "Netto-PnL +2486.69 USD nach Gebuehren",
+        "Trefferquote 73.56 Prozent",
+        "MaxDD -1350.73 USD",
+        "Maximales offenes Risiko 2498.60 USD",
+        "CTAS-Live-Scanner-Paritaet fuer 02.07.2026 exakt reproduziert"
+      ],
+      "validation": {
+        "no_lookahead": "verified_for_signal_and_live_scanner_reference",
+        "out_of_sample": "year_blocks_positive_2022_2026_but_not_reserved_oos",
+        "costs_slippage": "proxy_conservative_plus_live_bid_ask",
+        "independent_verification": "not_done"
+      },
+      "money_management": {
+        "status": "implemented_for_paper",
+        "config_ref": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\risk\\options_risk_budget.py",
+        "open_issue": "Fester USD-Modellwert; vor echtem EUR-Kontohandel sind FX-Umrechnung und Sektorgrenze zu klaeren."
+      },
+      "ibkr_integration": {
+        "status": "implemented_unit_tested",
+        "adapter_ref": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\execution\\stock_put_credit.py",
+        "dry_run_verified": true,
+        "paper_verified": false,
+        "production_runner": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\live_manual_regime_tws_bot.py",
+        "order_gate": "Paper-only DU account plus --enable-stock-ivr70-put-credit; order transmission additionally requires --place-orders"
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "artifact_verified",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\multi-stock-ivr70-put-credit.md",
+        "last_audited": "2026-07-22"
+      },
+      "production_eligible": false,
+      "next_action": "Tages-Dry-Run mit laufender Paper-TWS und danach ersten BAG-Paper-Fill, TP-/21DTE-Exit und Journal-Reconciliation verifizieren.",
+      "last_updated": "2026-07-23"
+    },
+    {
+      "strategy_id": "spx-15dte-put-credit-income-core",
+      "parent_strategy_id": null,
+      "display_name": "SPX 15DTE Put-Credit Income Core",
+      "family": "spx_options_credit",
+      "lifecycle_stage": "bot_integration",
+      "work_state": "frozen_candidate",
+      "priority": "secondary",
+      "current_summary": "Die kausal korrigierte Version 1.1.0 wertet die abgeschlossene 13:30-SPY-Kerze aus und handelt den 13:35-SPXW-Quote. Der korrigierte Replay umfasst 129 Trades; die Paper-only Bot-Integration ist implementiert und unit-getestet, aber noch nicht durch einen echten Paper-Fill verifiziert.",
+      "hypothesis": "Ein gefilterter 15DTE SPX Put-Credit-Spread verdient die Volatilitaetspraemie, waehrend Damage-Management und Regime-/POC-Filter Tail-Verluste begrenzen.",
+      "research_root": "D:\\PycharmProjects\\PythonProject",
+      "primary_source": "D:\\PycharmProjects\\PythonProject\\ai_agents\\stand_15dte_current_baseline_strategy_details_2026-06-12.md",
+      "engine_entrypoint": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\live_manual_regime_tws_bot.py --enable-spxw-15dte-put-credit",
+      "backtest_entrypoint": "D:\\PycharmProjects\\PythonProject\\research\\rebuild_spxw_15dte_causal_2023_2026.py",
+      "evidence_metrics": [
+        "129 kausale Trades 2023 bis 2026",
+        "Netto-PnL +10109.60 USD nach Gebuehren",
+        "Trefferquote 87.60 Prozent",
+        "MaxDD -1565.20 USD",
+        "Historische Live-Regel-Paritaet 129/129"
+      ],
+      "validation": {
+        "no_lookahead": "verified_unit_and_replay",
+        "out_of_sample": "reviewed",
+        "costs_slippage": "conservative_bid_ask",
+        "independent_verification": "not_done"
+      },
+      "money_management": {
+        "status": "implemented_for_paper",
+        "config_ref": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\strategies\\spxw_15dte_put_credit.py",
+        "open_issue": "Maximal sechs parallele Ein-Kontrakt-Positionen sind implementiert; Portfolio-Kapitalgrenze und echter Paper-Fill bleiben zu verifizieren."
+      },
+      "ibkr_integration": {
+        "status": "implemented_unit_tested",
+        "adapter_ref": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\execution\\spxw_put_credit.py",
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\live_manual_regime_tws_bot.py",
+        "order_gate": "Paper-only DU account plus --enable-spxw-15dte-put-credit; order transmission additionally requires --place-orders"
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "artifact_verified",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\spx-15dte-put-credit-income-core.md",
+        "last_audited": "2026-07-14"
+      },
+      "production_eligible": false,
+      "next_action": "Bot zunaechst ohne --place-orders an einem Signaltag gegen die Paper-TWS laufen lassen; danach ersten BAG-Paper-Fill, Griechen, Credit, Damage-Exit und Journal-Reconciliation pruefen.",
+      "last_updated": "2026-07-21"
+    },
+    {
+      "strategy_id": "spx-flyagonal-12-15dte",
+      "parent_strategy_id": null,
+      "display_name": "SPX Flyagonal 12/15DTE",
+      "family": "spx_options_multileg",
+      "lifecycle_stage": "paper_trading",
+      "work_state": "monitoring",
+      "priority": "secondary",
+      "current_summary": "Die Screenshot-Struktur ist reproduzierbar spezifiziert. Baseline-Replays, exakte ThetaData-Reproduktion sowie Management- und Thin-Rally-Varianten liegen vor; die Stichprobe ist klein und nicht unabhaengig validiert.",
+      "hypothesis": "Eine Put-Diagonal-plus-Call-Fly-Struktur kann bei kontrolliertem Management ein asymmetrisches SPX-Renditeprofil erzeugen.",
+      "research_root": "D:\\PycharmProjects\\Multi_Agent_Option_Test\\single_strategy_lab",
+      "primary_source": "D:\\PycharmProjects\\Multi_Agent_Option_Test\\agent_state\\CURRENT_STATE.md",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": "D:\\PycharmProjects\\Multi_Agent_Option_Test\\single_strategy_lab\\research_spx_flyagonal_monday_cycle.py",
+      "evidence_metrics": [
+        "Monday-Replay 2025-10 bis 2026-06",
+        "54 Trades im Thin-Rally-Full-Export",
+        "Exakte ThetaData-Quote-Reproduktion vorhanden",
+        "Warning-plus-Stop-Kandidat PnL 6979 im untersuchten Export"
+      ],
+      "validation": {
+        "no_lookahead": "reviewed_for_current_features",
+        "out_of_sample": "not_done",
+        "costs_slippage": "exact_quote_partial",
+        "independent_verification": "not_done"
+      },
+      "money_management": {
+        "status": "variants_under_test",
+        "config_ref": null,
+        "open_issue": "Management-Kandidat ist auf kleiner, wiederverwendeter Stichprobe ausgewaehlt."
+      },
+      "ibkr_integration": {
+        "status": "not_started",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "artifact_verified",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\spx-flyagonal-12-15dte.md",
+        "last_audited": "2026-07-14"
+      },
+      "production_eligible": false,
+      "next_action": "DTE-Definition und Kostenmodell vereinheitlichen, den Management-Kandidaten einfrieren und die geplante echte Train/Test-Trennung ausfuehren.",
+      "last_updated": "2026-06-28"
+    },
+    {
+      "strategy_id": "spx-0dte-bull-put-iu30-butterfly",
+      "parent_strategy_id": null,
+      "display_name": "SPX 0DTE Bull-Put plus IU30 Butterfly Overlay",
+      "family": "spx_0dte_options",
+      "lifecycle_stage": "backtest_validation",
+      "work_state": "active",
+      "priority": "secondary",
+      "current_summary": "Vollstaendiger Kausalitaets-Audit: Auch das alte Bull-Put-Breadth-Signal war um 09:35 noch nicht bekannt. Beide Zeitpunkte wurden mit neu berechneten Top50-/SPX-Kontexten und vollstaendigen ThetaData-Snapshots verglichen. 09:40 wurde fuer Forward-Paper gewaehlt: Natural +16249 USD, PF 3.11, MaxDD -2423 bei 189 handelbaren Tagen und 18 IU30-Overlays. 09:35 erzielte mehr P/L, aber 37% hoeheren Drawdown; der gepaarte P/L-Vorteil war statistisch nicht stabil.",
+      "hypothesis": "Ein gezielter 0DTE-Butterfly-Overlay verbessert das Tail-/Payoff-Profil eines Bull-Put-Basissignals in einem eng definierten Value-Kontext.",
+      "research_root": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03",
+      "primary_source": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\handoff_2026-07-07_spx_0dte_butterfly_filters_overlay.md",
+      "engine_entrypoint": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\live_manual_regime_tws_bot.py --enable-spxw-0dte-bull-put-iu30",
+      "backtest_entrypoint": "D:\\PycharmProjects\\PythonProject\\research\\compare_spx_0dte_timing_variants.py",
+      "evidence_metrics": [
+        "09:40: 193 Signaltage / 189 handelbar / 18 IU30-Overlays",
+        "09:40 Natural PnL +16249, PF 3.11, MaxDD -2423",
+        "09:35 Natural PnL +17539, PF 2.52, MaxDD -3328",
+        "Paired common-day delta +931, Bootstrap90 [-1727,+3963]"
+      ],
+      "validation": {
+        "no_lookahead": "reviewed_for_current_features",
+        "out_of_sample": "not_done",
+        "costs_slippage": "exact_quote_partial",
+        "independent_verification": "not_done"
+      },
+      "money_management": {
+        "status": "implemented_for_paper",
+        "config_ref": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\strategies\\spxw_0dte_bull_put_iu30.py",
+        "open_issue": "Der 2500-USD-Standarddeckel blockiert historisch 16 von 18 IU30-Tagen (IU30-Medianrisiko 3147.50 USD); eine bewusste Portfolio-Risikoentscheidung sowie echte Paper-Fills und IB-Margin-Beobachtungen fehlen noch."
+      },
+      "ibkr_integration": {
+        "status": "integrated_paper_only",
+        "adapter_ref": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\execution\\spxw_0dte_iu30.py",
+        "dry_run_verified": true,
+        "paper_verified": false,
+        "production_runner": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\live_manual_regime_tws_bot.py",
+        "order_gate": "--enable-spxw-0dte-bull-put-iu30 plus --place-orders; DU account mandatory"
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "reproduced",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\spx-0dte-bull-put-iu30-butterfly.md",
+        "last_audited": "2026-07-29"
+      },
+      "production_eligible": false,
+      "next_action": "Den Schalter im DU-Paperbetrieb aktivieren und echte SPXW-Combo-Quotes/Fills als Forward-OOS-Evidenz sammeln; bis dahin nicht produktionsberechtigt.",
+      "last_updated": "2026-07-29"
+    },
+    {
+      "strategy_id": "spy-failed-auction-poc-2dte-bwb",
+      "parent_strategy_id": null,
+      "display_name": "SPY Failed-Auction zu POC 2DTE Put-Fly/BWB",
+      "family": "spy_short_dte_options",
+      "lifecycle_stage": "backtest_validation",
+      "work_state": "active",
+      "priority": "quick_probe",
+      "current_summary": "Legacy-Kontrollanker: OptionOmega trade-log(27) verifiziert +476 USD und 10/16 Gewinner fuer die alte 2DTE-U10/L10-Auswahl. Die neue Rohbar-Rekonstruktion zeigt, dass diese Stichprobe Retest- und First-Touch-Faelle mischt; strikte Hard-12- und Hard-6-Hypothesen werden deshalb unter eigenen Strategy-IDs weitergefuehrt.",
+      "hypothesis": "Nach einer Failed Auction besteht eine kurzfristige Mean-Reversion zum POC, die mit einer definierten Put-Fly/BWB-Struktur handelbar ist.",
+      "research_root": "D:\\PycharmProjects\\PythonProject\\statistic\\spy_failed_auction_poc_fly_research",
+      "primary_source": "D:\\PycharmProjects\\PythonProject\\statistic\\spy_failed_auction_poc_fly_research\\README.md",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": "D:\\PycharmProjects\\PythonProject\\statistic\\spy_failed_auction_poc_fly_research\\run_research.py",
+      "evidence_metrics": [
+        "16 Legacy-Kandidaten, davon 2 Pre-Entry-POC-Hits",
+        "12 von 14 kausalen Initial-Touch-Trades erreichen POC",
+        "OptionOmega U10/L10 +476 USD und 10 Gewinner lokal verifiziert",
+        "Kalibrierungs-MAE Leave-one-out 40.20 -> 19.32 USD",
+        "Kausaler kalibrierter Proxy +453.05 USD bei 14 Trades"
+      ],
+      "validation": {
+        "no_lookahead": "reviewed_for_current_features",
+        "out_of_sample": "not_done",
+        "costs_slippage": "exact_quote_partial",
+        "independent_verification": "partial"
+      },
+      "money_management": {
+        "status": "not_started",
+        "config_ref": null,
+        "open_issue": "No-Touch-Management und weitere Breiten fehlen."
+      },
+      "ibkr_integration": {
+        "status": "not_started",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "artifact_verified",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\spy-failed-auction-poc-2dte-bwb.md",
+        "last_audited": "2026-07-17"
+      },
+      "production_eligible": false,
+      "next_action": "Als unveraenderten Legacy-Kontrollanker behalten; neue Parameter nicht mehr auf dieser gemischten Retest-/First-Touch-Stichprobe auswaehlen.",
+      "last_updated": "2026-07-17"
+    },
+    {
+      "strategy_id": "spy-failed-auction-poc-hard12-first-touch-options",
+      "parent_strategy_id": "spy-failed-auction-poc-2dte-bwb",
+      "display_name": "SPY Failed-Auction Hard-12 First-Touch Options",
+      "family": "spy_short_dte_options",
+      "lifecycle_stage": "bot_integration",
+      "work_state": "frozen_candidate",
+      "priority": "quick_probe",
+      "current_summary": "Neuer eng definierter Paper-Kandidat: Hard-12, kausaler RVOL 1,00-1,20, erster POC-Touch, 1DTE U10/L10 mit Body am POC und ohne CRV10-Gate. Auf 12 unveraenderten Signalen erzielt der konservative Touch-Mid-30m-Exit +51,42 USD je Fly; die Teilstichprobe 2024-2026 umfasst 7 Trades und +477,50 USD. Wegen n=12 und nicht beobachteter BAG-Fills ausschliesslich Paper-Trading.",
+      "hypothesis": "Nach einer streng kausal bestaetigten Hard-12 Failed Auction ohne vorherigen POC-Touch bietet ein kurzer Put-Fly auf den ersten Ruecklauf zum POC ein robustes asymmetrisches Auszahlungsprofil.",
+      "research_root": "D:\\PycharmProjects\\PythonProject\\statistic\\spy_failed_auction_poc_fly_research",
+      "primary_source": "D:\\Trading\\research\\spy_failed_auction_poc_fly\\signal_heatmaps\\REPORT.md",
+      "engine_entrypoint": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\bot\\failed_auction_poc_fly_monitor.py",
+      "backtest_entrypoint": "D:\\PycharmProjects\\PythonProject\\statistic\\spy_failed_auction_poc_fly_research\\sweep_hard_signal_options.py",
+      "evidence_metrics": [
+        "71 strikte Initial-Touch-Einstiege aus 118 Hard-12-Signalen",
+        "48/71 POC-Touches bis Next+2 = 67,6%",
+        "Entry-Distanz unter 0,50%: 32/38 Touches",
+        "44 konservativ robuste Proxy-Zellen, ausschliesslich 1DTE",
+        "51/71 historisch bestaetigte exakte 1DTE-Verfaelle mit vollstaendigen U10/L10-Quotes",
+        "Body am POC: 0/51 mit konservativem CRV mindestens 10:1",
+        "Naechster CRV10-OTM-Body: -5,35 USD je Trade konservativ, -1,45 USD am Mid",
+        "30/51 POC-Touches vor 1DTE-Verfall gegenueber 48/71 bis Next+2",
+        "2DTE CRV10-OTM: +0,70 USD konservativ auf 37 Trades, aber negative Development- und OOS-Bloecke",
+        "Matched 2DTE-minus-1DTE: +0,71 USD, Bootstrap 95% -18,21 bis +20,57 USD",
+        "VIX-Skalierung schlaegt fixe Breiten nicht",
+        "3DTE in allen matched Geometrie-/Exit-Zellen negativ",
+        "RVOL-1,00-1,20-Kandidat: 12 unveraenderte Signale mit echten 1-Minuten-NBBOs",
+        "Touch-Mid-Limit 30 Minuten: +51,42 USD je Fly konservativ, 58% Trefferquote, MaxDD 177 USD",
+        "2024-2026-Teilstichprobe: 7 Trades, +477,50 USD konservativ"
+      ],
+      "validation": {
+        "no_lookahead": "reviewed_for_current_features",
+        "out_of_sample": "partial_small_2026_sample",
+        "costs_slippage": "historical_nbbo_mid_and_leg_conservative",
+        "independent_verification": "reproduced"
+      },
+      "money_management": {
+        "status": "fixed_one_fly_paper",
+        "config_ref": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\strategies\\failed_auction_poc_fly.py",
+        "open_issue": "Nur ein Fly; der Debit ist der Maximalverlust. Portfolio-Limit und physische SPY-Settlement-Behandlung bleiben vor Produktion offen."
+      },
+      "ibkr_integration": {
+        "status": "implemented_unit_tested",
+        "adapter_ref": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\execution\\spy_poc_fly.py",
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\live_manual_regime_tws_bot.py --enable-failed-auction-fly --place-orders",
+        "order_gate": "explizites enable-Flag plus bestehendes --place-orders; zusaetzlicher harter DU-Paperkonto-Guard"
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "reproduced",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\spy-failed-auction-poc-hard12-first-touch-options.md",
+        "last_audited": "2026-07-18"
+      },
+      "production_eligible": false,
+      "next_action": "Bot an einem Handelstag mit laufender Paper-TWS im Dry-Run starten; danach den ersten echten Paper-BAG-Fill und den Touch-/30m-Exit gegen NBBO und Journal pruefen.",
+      "last_updated": "2026-07-18"
+    },
+    {
+      "strategy_id": "spy-failed-auction-poc-hard6-first-touch-options",
+      "parent_strategy_id": "spy-failed-auction-poc-2dte-bwb",
+      "display_name": "SPY Failed-Auction Hard-6 First-Touch Options",
+      "family": "spy_short_dte_options",
+      "lifecycle_stage": "exploration",
+      "work_state": "parked",
+      "priority": "backlog",
+      "current_summary": "Hard-6 erhoeht die strikte Stichprobe von 71 auf 108 Einstiege bei aehnlicher POC-Touchrate von 68,5%. Im getrennten Options-Grid besteht jedoch keine der 525 Zellen gleichzeitig Zeitblock-, Nachbarschafts- und 22,63-USD-Modellfehler-Gate. Die weichere Hypothese bleibt deshalb geparkt.",
+      "hypothesis": "Sechs statt zwoelf aufeinanderfolgende Inside-Value-Closes liefern frueher und haeufiger handelbare Failed-Auction-Einstiege, ohne die POC-Ruecklaufwahrscheinlichkeit wesentlich zu verwässern.",
+      "research_root": "D:\\PycharmProjects\\PythonProject\\statistic\\spy_failed_auction_poc_fly_research",
+      "primary_source": "D:\\Trading\\research\\spy_failed_auction_poc_fly\\signal_heatmaps\\REPORT.md",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": "D:\\PycharmProjects\\PythonProject\\statistic\\spy_failed_auction_poc_fly_research\\sweep_hard_signal_options.py",
+      "evidence_metrics": [
+        "108 strikte Initial-Touch-Einstiege",
+        "74/108 POC-Touches bis Next+2 = 68,5%",
+        "525 Optionsparameter-Zellen untersucht",
+        "0 Zellen bestehen das konservative Modellfehler-Robustheitsgate"
+      ],
+      "validation": {
+        "no_lookahead": "reviewed_for_current_features",
+        "out_of_sample": "partial_small_2026_sample",
+        "costs_slippage": "calibrated_proxy_only",
+        "independent_verification": "reproduced"
+      },
+      "money_management": {
+        "status": "not_started",
+        "config_ref": null,
+        "open_issue": "Nicht sinnvoll vor einem robusten Optionskandidaten."
+      },
+      "ibkr_integration": {
+        "status": "not_started",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "reproduced",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\spy-failed-auction-poc-hard6-first-touch-options.md",
+        "last_audited": "2026-07-17"
+      },
+      "production_eligible": false,
+      "next_action": "Parken; nur bei neuen unabhaengigen Daten oder einer fachlich neuen Exit-/Strukturhypothese wieder aufnehmen.",
+      "last_updated": "2026-07-17"
+    },
+    {
+      "strategy_id": "spy-volume-vix-0dte-call-fly",
+      "parent_strategy_id": null,
+      "display_name": "SPY Volume/VIX 0DTE Call-Fly",
+      "family": "spy_0dte_options",
+      "lifecycle_stage": "statistical_evidence",
+      "work_state": "parked",
+      "priority": "quick_probe",
+      "current_summary": "Exact-Quote-Kontrollanker ueber 864 Sessions: fixer 2-Punkte-0DTE-Call-Fly konservativ -8.453 USD, Midpoint nach Gebuehren -3.194 USD. Die vorab festgelegte Above-Value/Thin-Volume/VIX<=20-Regel scheitert im OOS 2025-2026 ebenfalls (-226 USD konservativ, -14 USD Midpoint bei 30 Trades). Der kleine theoretische Mid-Edge reicht nicht fuer Kosten und Fill-Risiko.",
+      "hypothesis": "Volumenprofil-Kontext und VIX-Zustand identifizieren Tage, an denen ein eng definierter 0DTE Call-Fly ein guenstiges asymmetrisches Profil hat.",
+      "research_root": "D:\\PycharmProjects\\PythonProject\\statistic\\spy_volume_vix_research_part2",
+      "primary_source": "D:\\PycharmProjects\\PythonProject\\statistic\\spy_volume_vix_research_part2\\README.md",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": "D:\\PycharmProjects\\PythonProject\\statistic\\spy_volume_vix_research_part2\\backtest_spy_fixed_call_fly.py",
+      "evidence_metrics": [
+        "864 von 868 Sessions mit echten 09:40-SPY-Bid/Ask-Ketten bewertet",
+        "Fixer plus/minus 2-Punkte-Fly konservativ -8.453 USD; Midpoint nach Gebuehren -3.194 USD",
+        "Frozen Volume/VIX-OOS 2025-2026: 30 Trades, -226 USD konservativ und -14 USD Midpoint",
+        "VIX-variable Breite noch ungetestet"
+      ],
+      "validation": {
+        "no_lookahead": "verified",
+        "out_of_sample": "failed",
+        "costs_slippage": "tested",
+        "independent_verification": "not_done"
+      },
+      "money_management": {
+        "status": "not_started",
+        "config_ref": null,
+        "open_issue": null
+      },
+      "ibkr_integration": {
+        "status": "not_started",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "artifact_verified",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\spy-volume-vix-0dte-call-fly.md",
+        "last_audited": "2026-07-30"
+      },
+      "production_eligible": false,
+      "next_action": "Parken. Nur mit einer fachlich neuen, vorab festgelegten VIX-skalierten breiteren Struktur und einem neuen Forward-Fenster wieder aufnehmen; keine weiteren Filter auf dem bereits geoeffneten OOS-Block suchen.",
+      "last_updated": "2026-07-30"
+    },
+    {
+      "strategy_id": "multi-asset-vwap-stretch-revert-long",
+      "parent_strategy_id": null,
+      "display_name": "Multi-Asset VWAP Stretch-Revert Long",
+      "family": "multi_asset_intraday_vwap",
+      "lifecycle_stage": "backtest_validation",
+      "work_state": "active",
+      "priority": "secondary",
+      "current_summary": "Der kausale Audit deckte neben Exit- und Rechtszensurfehlern eine falsche Filterreihenfolge auf: abgelehnte Signale blockierten spaetere Einstiege. Mit Filtern vor der Simulation erzielt die Next-Open-Baseline 2025-29.07.2026 +36.50R bei MaxDD -24.57R. Eine bestaetigte Higher-Low-Reversal-Variante senkt den MaxDD auf -7.60R bei +12.38R, ist aber 2026 nicht durchgehend positiv und bleibt Research-Kandidat.",
+      "hypothesis": "Ueberdehnte Intraday-Abweichungen vom VWAP revertieren bei positivem Relative-Strength-Kontext und normaler Liquiditaet.",
+      "research_root": "D:\\PycharmProjects\\PythonProject",
+      "primary_source": "D:\\PycharmProjects\\PythonProject\\ai_agents\\2026-05-28\\stand_vwap_long_candidate_hardening_2026-05-28.md",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": "D:\\PycharmProjects\\PythonProject\\research\\analyze_vwap_stretch_revert_long_frozen_oos_2026.py",
+      "evidence_metrics": [
+        "Korrigierte Next-Open-Baseline: 325 Trades und +36.50R nach 10 bps je Seite",
+        "Next-Open-Baseline MaxDD -24.57R und PF 1.34",
+        "Higher-Low-Reversal: 157 Trades, +12.38R, MaxDD -7.60R und PF 1.27",
+        "Higher-Low-Reversal 2026 bis 10.04. -3.44R, danach +3.93R",
+        "Entwicklungsgewinner 3-Tage-Time-Stop scheitert im spaeteren Fenster mit -3.16R"
+      ],
+      "validation": {
+        "no_lookahead": "reviewed_causal_exit_sensitivity",
+        "out_of_sample": "not_done_after_entry_pipeline_correction",
+        "costs_slippage": "reviewed_10bps_each_side_gap_aware",
+        "independent_verification": "partial"
+      },
+      "money_management": {
+        "status": "not_started",
+        "config_ref": null,
+        "open_issue": "Rolling Health, Portfolio-Korrelation und verbindliches Sizing fehlen."
+      },
+      "ibkr_integration": {
+        "status": "not_started",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "artifact_verified",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\multi-asset-vwap-stretch-revert-long.md",
+        "last_audited": "2026-07-30"
+      },
+      "production_eligible": false,
+      "next_action": "Die Higher-Low-Reversal-Bedingung als getrennte risikoarme Research-Variante einfrieren und nur auf neuen Daten fortschreiben; parallel die korrekte Filter-vor-Simulation-Reihenfolge als verbindliche Backtestsemantik dokumentieren. Keine Bot-Integration vor neuer Forward-Evidenz.",
+      "last_updated": "2026-07-30"
+    },
+    {
+      "strategy_id": "multi-asset-vwap-stretch-revert-long-higher-low",
+      "parent_strategy_id": "multi-asset-vwap-stretch-revert-long",
+      "display_name": "Multi-Asset VWAP Stretch-Revert Long / Higher-Low Entry",
+      "family": "multi_asset_daily_vwap_reversion_variant",
+      "lifecycle_stage": "backtest_validation",
+      "work_state": "frozen_candidate",
+      "priority": "secondary",
+      "current_summary": "Risikoaermere Entry-Variante: Nach dem Stretch-Signal muss der Folgetag gruen schliessen, das Signal-Close zurueckerobern und ein hoeheres Tief bilden; Einstieg am darauffolgenden Open. 2025-29.07.2026: 157 Trades, +12.38R nach 10 bps je Seite, PF 1.27 und MaxDD -7.60R. Noch kein unangetasteter OOS-Zeitraum.",
+      "hypothesis": "Eine bestaetigte Bodenbildung durch Reversal-Close und hoeheres Tief vermeidet fallende Messer und reduziert Cluster-Drawdowns der Next-Open-Baseline.",
+      "research_root": "D:\\PycharmProjects\\PythonProject",
+      "primary_source": "D:\\Trading\\research\\multi_asset_vwap_stretch_revert_long\\frozen_oos_v1\\entry_confirmation_v1\\summary.csv",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": "D:\\PycharmProjects\\PythonProject\\research\\test_vwap_stretch_revert_long_entry_confirmation.py",
+      "evidence_metrics": [
+        "157 Trades 2025 bis 29.07.2026",
+        "+12.38R nach 10 bps je Seite",
+        "Profit Factor 1.27",
+        "MaxDD -7.60R statt -24.57R der korrigierten Next-Open-Kontrolle",
+        "2026 bis 10.04. -3.44R, danach +3.93R"
+      ],
+      "validation": {
+        "no_lookahead": "reviewed_causal_daily_confirmation",
+        "out_of_sample": "not_done_after_variant_selection",
+        "costs_slippage": "reviewed_10bps_each_side_gap_aware",
+        "independent_verification": "partial"
+      },
+      "money_management": {
+        "status": "not_started",
+        "config_ref": null,
+        "open_issue": "Portfolio-Exposure, Sektorcluster und verbindliches Sizing fehlen."
+      },
+      "ibkr_integration": {
+        "status": "not_started",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "reproduced",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\multi-asset-vwap-stretch-revert-long-higher-low.md",
+        "last_audited": "2026-07-30"
+      },
+      "production_eligible": false,
+      "next_action": "Regel unveraendert ab 30.07.2026 auf neuen Daten fortschreiben; keine weitere Entry- oder Exit-Optimierung bis ausreichend Forward-Trades vorliegen.",
+      "last_updated": "2026-07-30"
+    },
+    {
+      "strategy_id": "spx-45dte-put-credit-delta30-width20",
+      "parent_strategy_id": null,
+      "display_name": "SPX 45DTE Put-Credit Delta30 Width20",
+      "family": "spx_options_credit",
+      "lifecycle_stage": "robustness_validation",
+      "work_state": "parked",
+      "priority": "backlog",
+      "current_summary": "Existing-fast-IV-credit bleibt beste vorhandene Basis. Volume-Profile-Full-Close und 50-Prozent-De-Risking verbessern sie nicht robust; VP bleibt als Warnflag oder Entry-Sperre interessant.",
+      "hypothesis": "Ein 45DTE Put-Credit-Spread kann durch IV- und Volumenprofil-Kontext sowie kontrolliertes De-Risking stabilisiert werden.",
+      "research_root": "D:\\PycharmProjects\\PythonProject",
+      "primary_source": "D:\\PycharmProjects\\PythonProject\\ai_agents\\stand_45dte_volume_profile_damage_control_2026-06-10.md",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": null,
+      "evidence_metrics": [
+        "Beste Basis existing_fast_iv_credit",
+        "Full-Close und 50-Prozent-De-Risking nicht robust besser"
+      ],
+      "validation": {
+        "no_lookahead": "partial",
+        "out_of_sample": "partial",
+        "costs_slippage": "partial",
+        "independent_verification": "not_done"
+      },
+      "money_management": {
+        "status": "parked_after_negative_variants",
+        "config_ref": null,
+        "open_issue": "VP-Warnflag und Entry-Sperre wurden noch nicht als sauberer Kontrolltest isoliert."
+      },
+      "ibkr_integration": {
+        "status": "not_started",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "artifact_verified",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\spx-45dte-put-credit-delta30-width20.md",
+        "last_audited": "2026-07-14"
+      },
+      "production_eligible": false,
+      "next_action": "Nur mit einer vorab festgelegten Basisdefinition und einem unangetasteten Testfenster wieder aufnehmen; VP zunaechst nur als isolierte Entry-Sperre pruefen.",
+      "last_updated": "2026-06-10"
+    },
+    {
+      "strategy_id": "multi-asset-ema-options-oi-context",
+      "parent_strategy_id": null,
+      "display_name": "Multi-Asset EMA Long plus Options/OI Context",
+      "family": "multi_asset_ema_options",
+      "lifecycle_stage": "statistical_evidence",
+      "work_state": "parked",
+      "priority": "backlog",
+      "current_summary": "Optionsfilter verbessern einzelne Assets, aber nicht universell. OI-Flow ist schwach und asset-spezifisch; ein allgemein belastbarer Regelstack fehlt.",
+      "hypothesis": "Options-IV-, Greeks- oder OI-Kontext kann EMA-basierte Long-Signale assetabhaengig filtern oder gewichten.",
+      "research_root": "D:\\PycharmProjects\\PythonProject",
+      "primary_source": "D:\\PycharmProjects\\PythonProject\\ai_agents\\2026-05-28\\stand_thetadata_msft_options_client_2026-05-28.md",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": "D:\\Trading\\research\\multi_asset_ema_options_strategy_research.py",
+      "evidence_metrics": [
+        "Optionsfilter assetabhaengig",
+        "OI-Flow nicht universell belastbar",
+        "Saubere Train-2025/OOS-2026-Trennung noch offen"
+      ],
+      "validation": {
+        "no_lookahead": "partial",
+        "out_of_sample": "not_done",
+        "costs_slippage": "partial",
+        "independent_verification": "not_done"
+      },
+      "money_management": {
+        "status": "not_started",
+        "config_ref": null,
+        "open_issue": null
+      },
+      "ibkr_integration": {
+        "status": "not_started",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "artifact_verified",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\multi-asset-ema-options-oi-context.md",
+        "last_audited": "2026-07-14"
+      },
+      "production_eligible": false,
+      "next_action": "Falls wieder aufgenommen: Asset-Universum und Regeln vorab festlegen, ausschliesslich auf dem Trainingsfenster entwickeln und einen unangetasteten spaeteren OOS-Block reservieren.",
+      "last_updated": "2026-05-28"
+    },
+    {
+      "strategy_id": "vix-reversal-100dte-put-credit",
+      "parent_strategy_id": null,
+      "display_name": "XSP VIX-Pullback 100DTE Put-Credit",
+      "family": "spx_options_credit",
+      "lifecycle_stage": "paper_trading",
+      "work_state": "monitoring",
+      "priority": "secondary",
+      "current_summary": "Version 1.0.1-paper ist kausal mit 12:35 CT = 13:35 ET revalidiert. 26 momentumgefilterte Signale, 23 echte XSP-Strukturen, 22 abgeschlossene Trades: +490,60 USD netto, 19 Gewinner, Q-MTM-DD -569,80 USD, Roh-MTM-DD -919,60 USD. Alle neun benachbarten TP-/Zeitexit-Kombinationen bleiben positiv. Kleiner Paper-Kandidat, nicht produktionsreif.",
+      "hypothesis": "Ein kausaler VIX-Pullback nach erhoehter Volatilitaet besitzt bei positivem mittelfristigem SPX-Momentum genug Volatilitaetsnormalisierung, um einen klein skalierten XSP Put-Credit-Spread mit begrenztem Tail-Risiko profitabel zu managen.",
+      "research_root": "D:\\PycharmProjects\\PythonProject\\ai_agents\\strategy_ideas",
+      "primary_source": "D:\\PycharmProjects\\PythonProject\\ai_agents\\strategy_ideas\\vix_reversal_100dte_put_credit_2026-06-11.md",
+      "engine_entrypoint": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\live_manual_regime_tws_bot.py --enable-xsp-vix-pullback",
+      "backtest_entrypoint": "D:\\PycharmProjects\\PythonProject\\research\\backtest_xsp_vix_pullback_causal_v1_0_1.py",
+      "evidence_metrics": [
+        "Zeitachsenfehler reproduziert: 13:35 in CBOE-Rohdaten ist 14:35 ET und nicht die 13:35-ET-Entscheidung",
+        "Korrigierte Version 1.0.1-paper liest 12:35 CT fuer die Entscheidung um 13:35 ET",
+        "Kausaler Neuaufbau: 48 Rohsignale, 26 momentumgefilterte Einstiege; nur 8 Ueberlappungen mit dem alten Sample",
+        "Exact XSP 2021-2026: 22 closed, 19 winners, +490,60 USD netto, Q-MTM-DD -569,80 USD, Roh-MTM-DD -919,60 USD",
+        "2022 -295,80 USD; 2024-2026 neun abgeschlossene Gewinner und +479,40 USD, aber kleine Stichprobe",
+        "Slippage 0,10 Punkte Roundtrip: +270,60 USD; historisch maximal 1.799,60 USD gleichzeitiges definiertes Risiko",
+        "TP50/60/70 x Zeitexit 50/60/70: alle neun Nachbarzellen positiv; eingefrorene Parameter bleiben unveraendert"
+      ],
+      "validation": {
+        "no_lookahead": "verified",
+        "out_of_sample": "partial",
+        "costs_slippage": "reviewed",
+        "independent_verification": "reproduced"
+      },
+      "money_management": {
+        "status": "implemented",
+        "config_ref": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\strategies\\xsp_vix_pullback.py",
+        "open_issue": "Vollstaendigen Paper-Lebenszyklus von Entry-Fill ueber GTC-TP oder 60-DTE-Exit bis Journal-Reconciliation beobachten."
+      },
+      "ibkr_integration": {
+        "status": "implemented_unit_tested",
+        "adapter_ref": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\bot\\xsp_vix_pullback_monitor.py",
+        "dry_run_verified": true,
+        "paper_verified": false,
+        "production_runner": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03\\live_manual_regime_tws_bot.py --enable-xsp-vix-pullback --place-orders",
+        "order_gate": "--enable-xsp-vix-pullback plus --place-orders; hard DU account guard"
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "reproduced",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\vix-reversal-100dte-put-credit.md",
+        "last_audited": "2026-08-17"
+      },
+      "production_eligible": false,
+      "next_action": "Version 1.0.1 unveraendert im DU-Paperkonto handeln und Entry, TP60/60-DTE-Exit, Restart sowie Journal-Reconciliation beobachten; keine weitere historische Filter- oder Parameterwahl.",
+      "last_updated": "2026-08-17"
+    },
+    {
+      "strategy_id": "multi-asset-post-break-range-mid-long",
+      "parent_strategy_id": "multi-asset-manual-regime-top50",
+      "display_name": "Post-Break Range-Mid Long",
+      "family": "multi_asset_equity_regime_variant",
+      "lifecycle_stage": "statistical_evidence",
+      "work_state": "rejected",
+      "priority": "backlog",
+      "current_summary": "Die generische Range-Mid-Long-Regel bleibt verworfen. Die dokumentierten 110 Trades/-2215,55 USD sind keinem vorhandenen Ergebnisartefakt eindeutig zuordenbar; das auffindbare Ledger zeigt 28 Trades/-47,67 gewichtete Punkte.",
+      "hypothesis": "Ein Long aus der Mitte einer Post-Break-Range koennte zum Range-High revertieren.",
+      "research_root": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_adx_di_5min_2024_02_03",
+      "primary_source": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\handoff_2026-07-01_post_break_range_phase.md",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": null,
+      "evidence_metrics": [
+        "110 Trades",
+        "19 Symbole",
+        "Gesamt-PnL etwa -2215.55 USD",
+        "Regel aus aktiver Engine entfernt"
+      ],
+      "validation": {
+        "no_lookahead": "partial",
+        "out_of_sample": "partial",
+        "costs_slippage": "partial",
+        "independent_verification": "not_needed_after_rejection"
+      },
+      "money_management": {
+        "status": "not_applicable",
+        "config_ref": null,
+        "open_issue": null
+      },
+      "ibkr_integration": {
+        "status": "rejected_before_integration",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "documented_only",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\multi-asset-post-break-range-mid-long.md",
+        "last_audited": "2026-07-14"
+      },
+      "production_eligible": false,
+      "next_action": "Keine Fortsetzung; zuerst die widerspruechlichen Ergebnisquellen klaeren. Nur ein fachlich neues Setup darf spaeter eine neue Strategy-ID erhalten.",
+      "last_updated": "2026-07-01"
+    },
+    {
+      "strategy_id": "spx-15dte-damage-bear-call",
+      "parent_strategy_id": "spx-15dte-put-credit-income-core",
+      "display_name": "15DTE Damage Bear-Call Alternative",
+      "family": "spx_options_credit_variant",
+      "lifecycle_stage": "statistical_evidence",
+      "work_state": "rejected",
+      "priority": "backlog",
+      "current_summary": "Als Damage-Signal-Unterzweig verworfen und nicht als aktive Hauptstrategie weiterzufuehren.",
+      "hypothesis": "Nach einem Damage-Signal koennte ein Bear-Call-Spread die negative Phase besser monetarisieren.",
+      "research_root": "D:\\PycharmProjects\\PythonProject",
+      "primary_source": "D:\\PycharmProjects\\PythonProject\\ai_agents\\stand_15dte_bear_call_strategy_2026-06-09.md",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": null,
+      "evidence_metrics": [
+        "Negativer Alternativzweig im 15DTE-Damage-Research"
+      ],
+      "validation": {
+        "no_lookahead": "partial",
+        "out_of_sample": "partial",
+        "costs_slippage": "partial",
+        "independent_verification": "not_needed_after_rejection"
+      },
+      "money_management": {
+        "status": "not_applicable",
+        "config_ref": null,
+        "open_issue": null
+      },
+      "ibkr_integration": {
+        "status": "rejected_before_integration",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "artifact_verified",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\spx-15dte-damage-bear-call.md",
+        "last_audited": "2026-07-14"
+      },
+      "production_eligible": false,
+      "next_action": "Nicht fortsetzen; negative Evidenz beim 15DTE-Core verlinkt lassen.",
+      "last_updated": "2026-06-09"
+    },
+    {
+      "strategy_id": "spx-15dte-damage-put-debit",
+      "parent_strategy_id": "spx-15dte-put-credit-income-core",
+      "display_name": "15DTE Damage Put-Debit Alternative",
+      "family": "spx_options_debit_variant",
+      "lifecycle_stage": "statistical_evidence",
+      "work_state": "rejected",
+      "priority": "backlog",
+      "current_summary": "Put-Debit-Varianten nach Damage-Signal wurden untersucht und als aktiver Hauptpfad verworfen.",
+      "hypothesis": "Nach einem Damage-Signal koennte ein Put-Debit-Spread die negative Folgebewegung mit begrenztem Risiko handeln.",
+      "research_root": "D:\\PycharmProjects\\PythonProject",
+      "primary_source": "D:\\PycharmProjects\\PythonProject\\ai_agents\\stand_15dte_put_debit_followthrough_2026-06-09.md",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": null,
+      "evidence_metrics": [
+        "Mehrere Put-Debit-Strukturen und Follow-through-Varianten untersucht",
+        "Nicht als aktive Core-Strategie uebernommen"
+      ],
+      "validation": {
+        "no_lookahead": "partial",
+        "out_of_sample": "partial",
+        "costs_slippage": "partial",
+        "independent_verification": "not_needed_after_rejection"
+      },
+      "money_management": {
+        "status": "not_applicable",
+        "config_ref": null,
+        "open_issue": null
+      },
+      "ibkr_integration": {
+        "status": "rejected_before_integration",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "artifact_verified",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\spx-15dte-damage-put-debit.md",
+        "last_audited": "2026-07-14"
+      },
+      "production_eligible": false,
+      "next_action": "Nicht fortsetzen; nur bei einer neuen, vorab begrenzten Hypothese als neue Variante wieder aufnehmen.",
+      "last_updated": "2026-06-09"
+    },
+    {
+      "strategy_id": "spx-75dte-put-bwb-tuesday-vix15",
+      "parent_strategy_id": null,
+      "display_name": "SPX 75DTE Thursday VIX15 Put-BWB (Tuesday lineage)",
+      "family": "spx_options_multileg",
+      "lifecycle_stage": "paper_trading",
+      "work_state": "monitoring",
+      "priority": "secondary",
+      "current_summary": "Die aus OptionOmega rekonstruierte Strategie ist lokal mit echten SPXW-Quotes reproduziert und als separat schaltbarer Paper-Monitor integriert. Der isolierte TWS-Test wurde am 2026-08-13 um 14:17:56 UTC zu 4,10 Credit gefillt; die inverse GTC-40%-Zielorder wurde zu 2,45 Debit uebermittelt. Version 1.5.0 arbeitet jeweils 5 Minuten bei aktuellem Mid-0,20, Mid-0,40 und Mid-0,65. Fuer das befristete Paper-Experiment der naechsten zehn Sitzungen vom 14.-27.08.2026 sind Mo-Fr, maximal 20 Positionen und kein dediziertes BWB-Budget-Veto zugelassen; danach gilt automatisch wieder Donnerstag mit normalen Limits.",
+      "hypothesis": "Ein woechentlicher 75DTE +35/-55 Put-Broken-Wing-Butterfly auf SPXW erzielt bei VIX mindestens 15 durch Volatilitaetsabbau und asymmetrische Struktur einen positiven Erwartungswert.",
+      "research_root": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_75dte_put_bwb_research",
+      "primary_source": "D:\\Trading\\research\\spx_75dte_put_bwb\\daily_mtm_v1\\report.md",
+      "engine_entrypoint": "D:\\PycharmProjects\\IBKR_TradingBot\\src\\bot\\spxw_75dte_put_bwb_monitor.py",
+      "backtest_entrypoint": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_75dte_put_bwb_research\\run_independent_backtest.py",
+      "evidence_metrics": [
+        "138 lokale Signale, 135 Profit-Target-Exits, ein Verfallverlust und zwei offene Positionen am Stichtag",
+        "Trade-P/L-Korrelation 0,9971 auf 135 gemeinsamen Einstiegen",
+        "Taeglicher MTM-MaxDD nach Kosten -13,46% bei 100% Quote-Abdeckung",
+        "Spitzenrisiko 10.115 USD und maximal sieben gleichzeitige Positionen",
+        "Dienstag 2026-08-11 und Mittwoch 2026-08-12: Entries nicht gefillt",
+        "Donnerstag 2026-08-13: atomarer TWS-Paper-Fill um 14:17:56 UTC zu 4,10 Credit; inverse GTC-Zielorder zu 2,45 Debit",
+        "Seit 2024: Mid-0,65 mit 8.945 USD MTM-Gewinn, -3.013 USD MaxDD und 0,986 Tages-P/L-Korrelation zu Mid-0,40",
+        "Live-Preisstaffel: Mid-0,20, Mid-0,40 und Mid-0,65 fuer jeweils 5 Minuten, danach Storno",
+        "Befristetes Paper-Experiment 14.-27.08.2026: zehn Sitzungen Mo-Fr, bis 20 BWB-Positionen, dediziertes BWB-Budget kein Entry-Veto"
+      ],
+      "validation": {
+        "no_lookahead": "reproduced",
+        "out_of_sample": "not_separate_public_source_period",
+        "costs_slippage": "modeled_and_stressed",
+        "independent_verification": "optionomega_trade_log_and_thetadata_replay"
+      },
+      "money_management": {
+        "status": "implemented_paper_sleeve",
+        "config_ref": "weekday=Thursday; spxw-75dte-bwb-max-risk-usd=10500; quantity=1; maximum_concurrent_positions=7",
+        "open_issue": "Portfolioauswirkung zusammen mit den anderen Optionsstrategien ist noch nicht paper-verifiziert."
+      },
+      "ibkr_integration": {
+        "status": "implemented_paper_verified",
+        "adapter_ref": "src/execution/spxw_put_bwb.py",
+        "dry_run_verified": true,
+        "paper_verified": true,
+        "production_runner": "PythonProject/statistic/spx_adx_di_5min_2024_02_03/live_manual_regime_tws_bot.py",
+        "order_gate": "--enable-spxw-75dte-put-bwb plus --place-orders; hard DU account guard"
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "reproduced",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\spx-75dte-put-bwb-tuesday-vix15.md",
+        "last_audited": "2026-08-13"
+      },
+      "production_eligible": false,
+      "next_action": "Im Weekday-Paper-Experiment 14.-27.08.2026 Fill-Quote je Preisstufe und Journal-Reconciliation beobachten; danach automatisch zur Donnerstagseinstellung zurueckkehren.",
+      "last_updated": "2026-08-13"
+    },
+    {
+      "strategy_id": "iwm-rvx-pullback-100dte-put-credit",
+      "parent_strategy_id": "vix-reversal-100dte-put-credit",
+      "display_name": "IWM RVX-Pullback 100DTE Put-Credit",
+      "family": "index_etf_options_credit",
+      "lifecycle_stage": "backtest_validation",
+      "work_state": "frozen_candidate",
+      "priority": "secondary",
+      "current_summary": "Der kausale RVX/IWM-Kandidat nutzt einen rollierenden RVX-60%-Schwellenwert, mindestens 4% Rueckgang vom Peak, positives 20-Sitzungen-IWM-Momentum und IWM oberhalb der vorangegangenen SMA200. Alle zehn historischen Signale besitzen nach Feiertags- und Joint-Pair-Aufloesung vollstaendige echte ThetaData-Bid/Ask-Pfade: 10 Gewinner, +580,40 USD netto und -277,30 USD taeglicher MTM-MaxDD. Die Stichprobe beginnt erst Ende 2023 und bleibt fuer Bot-Integration zu klein.",
+      "hypothesis": "Nach erhoehter und bereits fallender Russell-2000-Volatilitaet normalisiert sich RVX in einem langfristigen IWM-Aufwaertsregime oft genug, um einen weit aus dem Geld liegenden, definiert riskanten IWM-Put-Credit-Spread zu monetarisieren.",
+      "research_root": "D:/PycharmProjects/PythonProject/data/option_omega_15DTE_ruleset1_analysis/iwm_rvx_pullback_100dte_thetadata_v1",
+      "primary_source": "D:/PycharmProjects/IBKR_TradingBot/docs/strategy_portfolio/audits/iwm-rvx-pullback-100dte-put-credit.md",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": "D:/PycharmProjects/PythonProject/research/backtest_iwm_rvx_pullback_100dte_thetadata.py",
+      "evidence_metrics": [
+        "Kausale lokale Datenzeit: RVX 12:35 CT entspricht 13:35 ET; IWM 13:35 ET",
+        "Exact ThetaData: 10/10 vollstaendige handelbare Strukturen, 10 Gewinner, +580,40 USD netto",
+        "Taeglicher qualitaetsgefilterter MTM-MaxDD -277,30 USD; maximales Einzelrisiko 879,30 USD",
+        "Datenluecken geklaert: 2026-06-19 auf Feiertagsverfall 2026-06-18 verschoben; 2024-08-29 naechstes gemeinsam quotiertes 200/190-Paar",
+        "Signal-Nachbarschaft q55-q65 und Drop 3%-5% bleibt im Optionsproxy positiv",
+        "Nach 60 Sitzungen: IWM in 7/9 Faellen hoeher und RVX in 8/9 Faellen niedriger"
+      ],
+      "validation": {
+        "no_lookahead": "reviewed_for_timestamp_and_rolling_thresholds",
+        "out_of_sample": "not_done_small_posthoc_sample",
+        "costs_slippage": "exact_conservative_bid_ask_with_quote_quality_gate",
+        "independent_verification": "not_done"
+      },
+      "money_management": {
+        "status": "research_only",
+        "config_ref": "100DTE floor; delta -0.20; width 10; TP60; 50-DTE time exit; maximum one contract",
+        "open_issue": "SMA200-Filter wurde nach Sichtung der Baseline-Verluste ergaenzt; unabhaengige Forward-/OOS-Evidenz fehlt."
+      },
+      "ibkr_integration": {
+        "status": "not_started",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "reproduced",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\iwm-rvx-pullback-100dte-put-credit.md",
+        "last_audited": "2026-08-11"
+      },
+      "production_eligible": false,
+      "next_action": "Regeln und Struktur eingefroren lassen und einen unangetasteten Forward-Paperblock sammeln; noch nicht als orderausloesende Bot-Strategie integrieren.",
+      "last_updated": "2026-08-11"
+    },
+    {
+      "strategy_id": "gld-gvz-pullback-100dte-put-credit",
+      "parent_strategy_id": "iwm-rvx-pullback-100dte-put-credit",
+      "display_name": "GLD GVZ-Pullback 100DTE Put-Credit",
+      "family": "commodity_etf_options_credit",
+      "lifecycle_stage": "backtest_validation",
+      "work_state": "frozen_candidate",
+      "priority": "secondary",
+      "current_summary": "Der kausale GVZ/GLD-Kandidat handelt nur erhoehte, aber nicht extreme Volatilitaet: GVZ-Pullback nach rollierendem q60-Signal, positives GLD-Momentum, GLD ueber SMA200 und Entry-GVZ nicht ueber dem vorherigen q90. Von 19 Signalen besitzen 14 strenge ThetaData-Paare. Exact Replay: 13 Gewinner, ein Verlust, +596,80 USD netto und -638,30 USD MTM-MaxDD. Der q90-Krisenfilter ist post-hoc und verlangt Forward-Evidenz.",
+      "hypothesis": "Nach erhoehter und bereits fallender Gold-Volatilitaet normalisiert sich GVZ in einem positiven, nicht extremen GLD-Regime oft genug, um einen weit aus dem Geld liegenden 10-Punkte-Put-Credit-Spread mit begrenztem Risiko zu monetarisieren.",
+      "research_root": "D:/PycharmProjects/PythonProject/data/option_omega_15DTE_ruleset1_analysis/gld_gvz_pullback_100dte_thetadata_v1",
+      "primary_source": "D:/PycharmProjects/IBKR_TradingBot/docs/strategy_portfolio/audits/gld-gvz-pullback-100dte-put-credit.md",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": "D:/PycharmProjects/PythonProject/research/backtest_gld_gvz_pullback_100dte_thetadata.py",
+      "evidence_metrics": [
+        "19 kausale q90-gefilterte Signale, 14 vollstaendige ThetaData-Strukturen",
+        "Exact ThetaData: 14 Closed, 13 Gewinner, +596,80 USD netto",
+        "Taeglicher qualitaetsgefilterter MTM-MaxDD -638,30 USD; schlimmster Trade -476,60 USD",
+        "Maximales Einzelrisiko 896,30 USD; historisch maximal 1.707,60 USD gleichzeitig",
+        "Bis Ende 2025 alle 13 Exact-Trades Gewinner; einziges 2026-Signal verliert"
+      ],
+      "validation": {
+        "no_lookahead": "reviewed_for_timestamp_and_rolling_thresholds",
+        "out_of_sample": "not_done_q90_guard_posthoc",
+        "costs_slippage": "exact_conservative_bid_ask_with_quote_quality_gate",
+        "independent_verification": "not_done"
+      },
+      "money_management": {
+        "status": "research_only",
+        "config_ref": "100DTE floor; delta -0.20 +/- 0.02; width 10; TP60; 50-DTE time exit; maximum one contract",
+        "open_issue": "Ein Verlust entspricht etwa fuenf bis sechs normalen Gewinnern; Forward-Stress des Krisenfilters fehlt."
+      },
+      "ibkr_integration": {
+        "status": "not_started",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "reproduced",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\gld-gvz-pullback-100dte-put-credit.md",
+        "last_audited": "2026-08-11"
+      },
+      "production_eligible": false,
+      "next_action": "Regeln einschliesslich q90-Krisenfilter einfrieren und als Forward-Paper-Scanner beobachten; keine weitere Auswahl auf den 14 Exact-Trades.",
+      "last_updated": "2026-08-11"
+    },
+    {
+      "strategy_id": "uso-ovx-pullback-100dte-put-credit",
+      "parent_strategy_id": "iwm-rvx-pullback-100dte-put-credit",
+      "display_name": "USO OVX-Pullback 100DTE Put-Credit",
+      "family": "commodity_etf_options_credit",
+      "lifecycle_stage": "statistical_evidence",
+      "work_state": "rejected",
+      "priority": "backlog",
+      "current_summary": "Die direkte Uebertragung des Volatilitaets-Pullbacks auf OVX/USO wird verworfen. Der USO-Forward-Pfad ist schwach, der gemeinsame Proxy bleibt negativ und nur eines von sieben moderat-q90-gefilterten Signalen besitzt ein vollstaendiges 10-Punkte-Paar nahe Delta -0,20. Das ist keine test- oder handelbare Optionshistorie.",
+      "hypothesis": "Nach erhoehter und fallender Oel-Volatilitaet koennte ein weit aus dem Geld liegender USO-Put-Credit-Spread von OVX-Normalisierung profitieren.",
+      "research_root": "D:/PycharmProjects/PythonProject/data/option_omega_15DTE_ruleset1_analysis/commodity_vol_pullback_entry_quotes_thetadata_v1/OVX_USO",
+      "primary_source": "D:/PycharmProjects/IBKR_TradingBot/docs/strategy_portfolio/audits/uso-ovx-pullback-100dte-put-credit.md",
+      "engine_entrypoint": null,
+      "backtest_entrypoint": "D:/PycharmProjects/PythonProject/research/verify_commodity_vol_pullback_entry_quotes_thetadata.py --pair OVX_USO",
+      "evidence_metrics": [
+        "17 Basissignale ohne q90-Obergrenze; Forward-USO nach 60 Sitzungen nur 56,25 Prozent nichtnegativ",
+        "q90 plus SMA200: 7 Signale, aber nur 1 vollstaendiges ThetaData-Paar",
+        "Gemeinsamer Optionsproxy negativ; hohe OVX erzeugt bei 10 Punkten Breite vielfach unzureichenden modellierten Credit",
+        "Kein belastbares historisches Exit-Sample"
+      ],
+      "validation": {
+        "no_lookahead": "reviewed_for_timestamp_and_rolling_thresholds",
+        "out_of_sample": "not_applicable_after_rejection",
+        "costs_slippage": "exact_entry_quote_availability_checked",
+        "independent_verification": "not_needed_after_rejection"
+      },
+      "money_management": {
+        "status": "not_applicable",
+        "config_ref": null,
+        "open_issue": null
+      },
+      "ibkr_integration": {
+        "status": "rejected_before_integration",
+        "adapter_ref": null,
+        "dry_run_verified": false,
+        "paper_verified": false,
+        "production_runner": null,
+        "order_gate": null
+      },
+      "audit": {
+        "status": "completed",
+        "evidence_level": "reproduced",
+        "report": "D:\\PycharmProjects\\IBKR_TradingBot\\docs\\strategy_portfolio\\audits\\uso-ovx-pullback-100dte-put-credit.md",
+        "last_audited": "2026-08-11"
+      },
+      "production_eligible": false,
+      "next_action": "Nicht weiter optimieren. Nur eine fachlich neue Oelstruktur oder ein anderes Underlying darf spaeter eine neue Strategy-ID erhalten.",
+      "last_updated": "2026-08-11"
+    }
+  ]
+}

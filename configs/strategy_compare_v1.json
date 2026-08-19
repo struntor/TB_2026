@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "as_of": "2026-06-24",
+  "target_dte": 90,
+  "option_strike_range": 200,
+  "option_multiplier": 100,
+  "use_mid_prices": true,
+  "proxy_symbol_map": {
+    "SPX": "SPY"
+  },
+  "option_root_map": {
+    "SPX": "SPXW"
+  },
+  "description": "Comparison defaults for engine trades: stock proxy versus ZEBRA options."
+}

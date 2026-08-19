@@ -1,0 +1,3 @@
+variant,label,start_capital,end_equity,net_pnl_dollars,trades,wins,losses,win_rate,profit_factor,max_drawdown_dollars
+old_cutoff_2025_11_top50_current_baseline,Old rank Top50,10000.0,47663.08663142856,37663.08663142858,1029,652,377,0.6336248785228377,2.179862947964453,-922.9810328571475
+optimized_cutoff_2025_11_top50_current_baseline,Optimized live Top50,10000.0,47507.42748928576,37507.427489285714,1014,649,365,0.6400394477317555,2.2204593274813624,-826.1625928571411
