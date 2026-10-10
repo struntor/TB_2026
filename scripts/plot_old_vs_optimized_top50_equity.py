@@ -7,7 +7,7 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE_DIR = ROOT / "PythonProject" / "statistic" / "spx_adx_di_5min_2024_02_03"
+SOURCE_DIR = ROOT / "IBKR_TradingBot" / "statistic" / "spx_adx_di_5min_2024_02_03"
 OUT_DIR = ROOT / "IBKR_TradingBot" / "out"
 
 TRADES_PATH = SOURCE_DIR / "current_baseline_optimized_cutoff_2025_11_top50_vs_old_trades.csv"

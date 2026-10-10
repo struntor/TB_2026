@@ -171,14 +171,14 @@ class OrchestratorConfig:
     def engine_root(self) -> Path:
         return (
             self.projects_root
-            / "PythonProject"
+            / "IBKR_TradingBot"
             / "statistic"
             / "spx_adx_di_5min_2024_02_03"
         )
 
     @property
     def downloader_path(self) -> Path:
-        return self.projects_root / "PythonProject" / "Daten_Download" / "Download_Asset_Data.py"
+        return self.projects_root / "IBKR_TradingBot" / "Daten_Download" / "Download_Asset_Data.py"
 
 
 class SingleInstanceLock:

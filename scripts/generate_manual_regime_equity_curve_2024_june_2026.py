@@ -7,7 +7,7 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[2]
-BASE = ROOT / "PythonProject" / "statistic" / "spx_adx_di_5min_2024_02_03"
+BASE = ROOT / "IBKR_TradingBot" / "statistic" / "spx_adx_di_5min_2024_02_03"
 OUT = ROOT / "IBKR_TradingBot" / "out"
 
 SOURCE_TRADES = BASE / "top50_current_baseline_trades_enriched.csv"

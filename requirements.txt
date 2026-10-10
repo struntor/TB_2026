@@ -1,0 +1,9 @@
+# Runtime versions from the tested Windows Python 3.13 environment (2026-10-10).
+ib-insync==0.9.86
+matplotlib==3.10.9
+numpy==2.4.4
+pandas==3.0.2
+psutil==7.2.2
+pytz==2026.1.post1
+thetadata==1.0.5
+tzdata==2026.2

@@ -1,0 +1,211 @@
+{
+  "date": "2026-10-10",
+  "source": "D:/PycharmProjects/PythonProject",
+  "source_origin": "https://github.com/struntor/TB_Prod_V1.md.git",
+  "source_base_commit": "29b5ace",
+  "source_state": "Copied from working tree including existing uncommitted changes; not a checkout of the base commit.",
+  "target_origin": "https://github.com/struntor/TB_2026.git",
+  "scope": "Runtime dependencies, three active configuration CSVs and six unit-test modules. Research datasets and credentials excluded.",
+  "files": [
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/current_baseline_rule_stack_2026_07_04.json",
+      "sha256": "aed7eaee7de8b009e251741388586098e524ab02f994ab602cdcb425de7be4a3"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/analyze_top50_regime_holding_time.py",
+      "sha256": "7f1bdbe660b95b5b70c7b07d4c6b74d50488c0d4ad95d5345e62a0bcd66450b4"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/apply_refined_veto_and_analyze_cluster_cooldown.py",
+      "sha256": "83a02401e4853a04623cfc6dc8169cb3068bdbfa658f563cf58f2a3cc7168d75"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/build_topn_union_ledger_sequential.py",
+      "sha256": "1f6e3cf903bbf9c7a154f218ead01323212fedf2ec0e5514959488019fe53af6"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/compare_cutoff_forward_topn_variants.py",
+      "sha256": "416746f1b85857e2e19c9f6a00525043f0e6f4e5d43045963b99069a7d1fd94c"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/compare_lhf_cluster_dedup_top50_equity.py",
+      "sha256": "0c8cd19719ae6e9ba794127ad501561dc528ad6ce3e77f8865c349c7376b6624"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/current_baseline_optimized_cutoff_2025_11_top50_rank_scores.csv",
+      "sha256": "cfe23f83168206e3c0fda260cc34afad8c281aae9790f70c7949117de61adcc5"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/current_baseline_optimized_cutoff_2025_11_top50_symbol_rule_selection.csv",
+      "sha256": "fc44ce209e06d004ac563043c50190d5c967c64fbdaa3520fd0284c0cc34b00f"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/current_baseline_optimized_cutoff_2025_11_top50_symbols.csv",
+      "sha256": "568ccdd165926a1c44117f05b1c06321971e0d3c43459d56aa2341d41e611f44"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/current_live_baseline_config.py",
+      "sha256": "c02407d5764158b22570280cdd8e64d98c0704b79fc2ad24f694c1c0eb4bf1cf"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/decision_records.py",
+      "sha256": "aa1ac2cc8f5b8b342a93082eebe7b8f59a7696e940a274a048b4fdb564ea6b33"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/lhf_cluster_rank_score.py",
+      "sha256": "2a83d0d31a70285f90fc2141687d07196b386732ec2e29dd70b7dc90d597072a"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/live_manual_regime_tws_bot.py",
+      "sha256": "c1886c8e40f21eea5d93d7204484ad8bc862dac2cb28194a9b49c977d75dd770"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/live_trading_journal.py",
+      "sha256": "60469f38763c98a178c32184014ff167fc81e3f960829ca0b0bad4f856befb75"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_bot_api.py",
+      "sha256": "98a52d30ffe920ee5f48f6c8da6ec459593de05b75d9096d82d51f6b5d419a3e"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_decision_time_manifest.py",
+      "sha256": "cc7cef3059e1d27004c52fb0109f0820c1485e2870eb1a6805ac02ef89f5c8c2"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_engine_v1_2_manifest.py",
+      "sha256": "b40c62898d330e7c6293d72e74e84cdf1114f169d1d922a459acae32a19b2c94"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_engine_v1_3_manifest.py",
+      "sha256": "db9ffe59e8b63745078e26c90b6d412ab0ff8d08973cfaf91d55b67b199e5251"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_failed_countermove_fresh_stop.py",
+      "sha256": "8f69213ae1f4d115c9948097357396b1cef7e27ade59ffca53f6428db87df1e4"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_fresh_stop_v3_manifest.py",
+      "sha256": "f527855a5d8c5647c7cbf2e2c97befda4b8e3efbf2d8b18d0edfcd1d3d05208e"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_gap_breakdown_quarter_sizing.py",
+      "sha256": "7523d1efb56dd8ff0193e6845f66ea4748f230dd8c6a28b213cf02b1849d5bdf"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_gap_quarter_v4_manifest.py",
+      "sha256": "2f3eeecef2cb66dd20c8b9f6d6a9b2a7174c9ba618e48cd073f68c8713297e39"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_journal_registry.py",
+      "sha256": "7644be7654f780d96f3ce6e5e91ba27e3a6f787da00b2eaec673604b31ab222c"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_position_sizing.py",
+      "sha256": "aad17a614ce291a21bf22c56ff07bac1544bca8dce7847ce38713c40c2b87e4d"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_rules_backtest_v1_1.py",
+      "sha256": "d523b11fc2a7736cf3e6e47251856beba933d7d3bf63ecc9226ef12620cfbd0f"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_rules_backtest.py",
+      "sha256": "b94b8e1f4ca6da88f13651485e4044f0376770341ef56f3fd1081963b349c6aa"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_sizing_v2_manifest.py",
+      "sha256": "c0da53eb4173322965c8e5a109d859ca4497ce56529ae4f7c832f880ad448a3a"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_variant_filters.py",
+      "sha256": "2e669cdee7a1a2469b2487e8c5d0b8f6e01e25f9b68ff98f93479f33584c9255"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/manual_regime_version_manifest.py",
+      "sha256": "f1ddb6179f684fb5298607fffc68f811e37837c20ffa5fe897b6f1aec6a192c7"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/plot_current_baseline_cutoff_2025_11_vs_2026_03.py",
+      "sha256": "9fd4ad30b2f6cc69bf4c0615e07fca58222e4927cf5bcb4509382e2a9c335015"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/run_top100_gap_lhf_rule_test.py",
+      "sha256": "571f52532a4e11e41723ddac74df61b456bb53124377782301082f920cfd5683"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/simulate_selected_symbols_portfolio_mm.py",
+      "sha256": "0c4cc362bf0668f115d135b486bfed065450b127bd8c7c5d1148de012ef2ad5e"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/sweep_lhf_entry_veto_portfolio.py",
+      "sha256": "bbf2dad375fef84aae8379625b69803d915a85cf9b5698846ec339a346a7a876"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/sweep_prior_churn_warning_veto.py",
+      "sha256": "cd9c8b9aa08c69ed767cc3d5c97fa686cc77bfb0bcc8f0bfe7fffd1f6dc815ad"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/test_current_live_baseline_config.py",
+      "sha256": "f38cf8fa83a8abb938e197be3e9716a3dcf38c85c63acae1780704269e19ca81"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/test_decision_records.py",
+      "sha256": "3e3f0f0ba590e3a0cc5b6a9ad2b55fdbe2d753a1a0dc1bc46eac3f8e110e13f2"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/test_failed_countermove_trend_normal_veto_top50_top100.py",
+      "sha256": "8849b0bdb375c8c2b347e870c445a6dbed5a7f2a3e66520539dfd4e565468614"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/test_lhf_cluster_rank_score.py",
+      "sha256": "5988159e072c3418799a2509284ca2bd5d28b810073715a22a96f15cdb867ccf"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/test_manual_regime_failed_countermove_fresh_stop.py",
+      "sha256": "b866cbc70bbfa70767b2c0409afed7f130463cdd50e9f5d662898174d4d523b3"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/test_manual_regime_gap_breakdown_quarter_sizing.py",
+      "sha256": "68d779083c36338ad8900f985f9c06f20a6f2fae00bbc7ca714c07fee35f6d7d"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/test_manual_regime_position_sizing.py",
+      "sha256": "b6e074c585903e6ef15ae80b388b2ce027d4077195240ba0af5869af55fff6c7"
+    },
+    {
+      "path": "statistic/spx_adx_di_5min_2024_02_03/test_volatility_reversal_gap_short_active_monitor.py",
+      "sha256": "5419e8f054c5183ff0c01d42b5fa249395d8c156fab9ec9fd37f13dafd151796"
+    },
+    {
+      "path": "research/audit_single_stock_drawdown_option_fit.py",
+      "sha256": "b709293535c0927faafcfca12d98522c669abd19465a3857c020426866784100"
+    },
+    {
+      "path": "research/backtest_high_ivr_put_credit_no_earnings.py",
+      "sha256": "4ff882e8190255dd6db12beb374cd1557c2b28cad39479222fb564b76a12cd92"
+    },
+    {
+      "path": "research/backtest_vix_earnings_put_credit_out_down_rolls.py",
+      "sha256": "6650bb091fe66e71a833a5063638636692a81ee2d8cafb2b4f45a44951b9cb30"
+    },
+    {
+      "path": "research/calibrate_iv_proxy_vix_earnings.py",
+      "sha256": "f7d89cb627136db39410020a2100c9cc86b3368475c6aa27c10cc592741d176e"
+    },
+    {
+      "path": "research/model_drawdown_recovery_put_credit_proxy.py",
+      "sha256": "686ae31b888fa0a2520d1d0469c15a432d46d074bd87c338c96ea6000ee9f4aa"
+    },
+    {
+      "path": "research/stock_ivr70_live_candidates.py",
+      "sha256": "e149cb3d4be5e102d3e4bd70b459fee9e12f1e598c3f3b70e4a539d49d780585"
+    },
+    {
+      "path": "Daten_Download/Download_Asset_Data.py",
+      "sha256": "ec34690edc500c8b8237620f3a2e57d1fc43f8b579ee1c43331e18d2b3b6c249"
+    },
+    {
+      "path": "Daten_Download/thetadata_options_client.py",
+      "sha256": "3f39fd8cb2c6dda28e5bea6fa0671a559bc505e538364eb06c500826e89cdf01"
+    }
+  ]
+}

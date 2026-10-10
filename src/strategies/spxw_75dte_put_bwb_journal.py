@@ -32,7 +32,7 @@ from src.strategies.spxw_75dte_put_bwb import (
 )
 
 
-CREATED_AT_UTC = "2026-08-13T19:55:00Z"
+CREATED_AT_UTC = "2026-09-03T00:00:00Z"
 
 
 def code_hash() -> str:
@@ -52,6 +52,8 @@ def register_manifest(store: Any, config: Spxw75DteBwbConfig) -> None:
         (
             ENTRY_RULE_ID,
             ENTRY_RULE_VERSION,
+            # Stable rule definitions are immutable in existing journals.
+            # The current schedule lives in versioned parameters and variant name.
             "Thursday 09:32 ET entry when opening VIX is at least 15, with a paper-only Monday-Friday experiment for the next ten sessions from 2026-08-14 through 2026-08-27",
             "entry",
         ),
@@ -80,7 +82,7 @@ def register_manifest(store: Any, config: Spxw75DteBwbConfig) -> None:
         store.register_strategy_variant(
             StrategyVariantRecord(
                 STRATEGY_VARIANT_ID, STRATEGY_ID, STRATEGY_VERSION,
-                "SPXW Thursday VIX15 75DTE +35/-55 put BWB with temporary weekday paper experiment",
+                "SPXW daily paper fill test VIX15 75DTE +35/-55 put BWB with normal risk limits",
                 ENGINE_VERSION, MONEY_MANAGEMENT_VERSION, config_hash(config),
                 "IBKR-SPX-and-VIX-live-09:32", "IBKR-paper-observed",
         "mid-minus-0.20-5m-then-mid-minus-0.40-5m-then-mid-minus-0.65-5m-else-cancel-and-GTC-40pct-profit-target",

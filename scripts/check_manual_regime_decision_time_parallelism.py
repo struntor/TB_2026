@@ -13,7 +13,7 @@ import pandas as pd
 BOT_ROOT = Path(__file__).resolve().parents[1]
 ENGINE_ROOT = (
     BOT_ROOT.parent
-    / "PythonProject"
+    / "IBKR_TradingBot"
     / "statistic"
     / "spx_adx_di_5min_2024_02_03"
 )

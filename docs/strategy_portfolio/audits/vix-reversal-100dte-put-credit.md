@@ -1066,3 +1066,124 @@ Artefakte:
 - `D:\PycharmProjects\PythonProject\data\option_omega_15DTE_ruleset1_analysis\xsp_vix_peak19_drop2_term_structure_direction_v1\exact_direction_summary.csv`
 - `D:\PycharmProjects\PythonProject\data\option_omega_15DTE_ruleset1_analysis\xsp_vix_peak19_drop2_term_structure_direction_v1\term_structure_direction_exact_comparison.png`
 - `D:\PycharmProjects\PythonProject\data\option_omega_15DTE_ruleset1_analysis\xsp_vix_peak19_drop2_term_structure_direction_v1\term_structure_shape_exact_comparison.png`
+
+## 32. Contango-DTE/TP-Vergleich vom 2026-08-19
+
+Fuer die in Abschnitt 31 isolierte Contango-Teilmenge wurde vor dem Lauf eine
+kleine feste Matrix definiert: Mindestlaufzeit 70 oder 100 DTE, jeweils TP50,
+TP60 und TP70. Unveraendert bleiben Peak19/Drop2, Entscheidung um 13:35 ET,
+`VIX < VIX3M`, XSP Standard-Monatsverfall, Short-Put Delta
+`-0,20 +/-0,015`, zehn Punkte Breite, konservativer Entry, 6,60 USD Gebuehren,
+maximal zwei Positionen und 2.500 USD gleichzeitig definiertes Risiko.
+
+Beim Aufbau wurde ein alter Kalenderfehler sichtbar: Die bisherige
+Research-Hilfsfunktion leitete XSP-Monatsverfaelle aus einer SPXW-Datei ab, in
+der beispielsweise der regulaere XSP-Verfall 2026-11-20 fehlte. Dieser Lauf
+verwendet deshalb ausschliesslich die tatsaechliche historische XSP-Verfallsliste.
+Alle 100-DTE-Auswahlen sind mindestens 100 Tage entfernt und liegen in dieser
+Stichprobe im Mittel bei rund 116 Tagen. Die 70-DTE-Auswahl liegt im Mittel bei
+rund 85 Tagen.
+
+### Vollstaendige verfuegbare Stichprobe
+
+| DTE | TP | Closed / offen | Gewinner | Netto-P/L | realisierter DD | Qualitaets-MTM-DD | Ø Haltedauer | P/L je 1.000 Risikodollar-Tage | P/L nach 0,10 Slippage |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 70 | 50 % | 23 / 0 | 23 | +1.176,70 USD | 0,00 USD | -878,60 USD | 41,2 Tage | 1,398 | +946,70 USD |
+| 70 | 60 % | 23 / 0 | 22 | +486,00 USD | -897,60 USD | -1.048,20 USD | 47,0 Tage | 0,506 | +256,00 USD |
+| 70 | 70 % | 23 / 0 | 22 | +740,80 USD | -897,60 USD | -1.028,00 USD | 51,4 Tage | 0,705 | +510,80 USD |
+| 100 | 50 % | 24 / 1 | 23 | +300,10 USD | -885,60 USD | -1.195,20 USD | 54,1 Tage | 0,260 | +60,10 USD |
+| 100 | 60 % | 22 / 2 | 21 | +440,20 USD | -920,60 USD | -1.900,00 USD | 62,0 Tage | 0,363 | +220,20 USD |
+| 100 | 70 % | 21 / 2 | 20 | +621,80 USD | -920,60 USD | -1.315,70 USD | 69,0 Tage | 0,483 | +411,80 USD |
+
+Die offenen 100-DTE-Positionen sind in der realisierten P/L nicht enthalten.
+Die unterschiedlichen TP-Ziele veraendern durch laengere Haltedauern auch die
+kausalen Portfolio-Blockaden; dies ist Teil des real handelbaren Ergebnisses.
+
+### Matched Sample
+
+Wegen historisch fehlender Legs sind nicht an jedem Datum beide Laufzeiten
+verfuegbar. Deshalb wurde zusaetzlich nur auf den 26 Signaltagen gerechnet, an
+denen 70 und 100 DTE beide eine Struktur innerhalb der Delta-Toleranz besitzen.
+
+| DTE | TP | Closed / offen | Gewinner | Netto-P/L | Qualitaets-MTM-DD | P/L je 1.000 Risikodollar-Tage | P/L nach 0,10 Slippage |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 70 | 50 % | 20 / 0 | 20 | +994,50 USD | -878,60 USD | 1,447 | +794,50 USD |
+| 70 | 60 % | 20 / 0 | 19 | +263,40 USD | -1.048,20 USD | 0,330 | +63,40 USD |
+| 70 | 70 % | 20 / 0 | 19 | +477,80 USD | -1.028,00 USD | 0,539 | +277,80 USD |
+| 100 | 50 % | 19 / 1 | 18 | +27,10 USD | -1.377,40 USD | 0,031 | -162,90 USD |
+| 100 | 60 % | 17 / 2 | 16 | +106,00 USD | -1.900,00 USD | 0,115 | -64,00 USD |
+| 100 | 70 % | 17 / 2 | 16 | +294,70 USD | -1.900,00 USD | 0,279 | +124,70 USD |
+
+TP60 und TP70 scheitern jeweils an einem diskreten Tail-Ereignis. Der
+70-DTE-Trade vom 2025-01-15 erreichte nach dem Entry einen besten gueltigen
+Capture von rund 56,0 %, aber nicht den bestaetigten TP60, und lief anschliessend
+mit -897,60 USD in den Maximalverlust. Beim 100-DTE-Trade vom 2024-12-20 waren es
+rund 58,1 % vor dem spaeteren Maximalverlust von -920,60 USD. Daraus
+nachtraeglich TP55 abzuleiten waere eine unmittelbare Anpassung an genau diese
+beiden historischen Pfade und wird ausdruecklich nicht vorgenommen.
+
+Ab 2023 erzielt 100 DTE/TP50 nominal +763,90 USD gegenueber +724,50 USD bei 70
+DTE/TP50, enthaelt aber einen noch offenen Trade und benoetigt rund 55 % mehr
+Risikodollar-Tage. Im gemeinsamen Sample ab 2023 liegt 70 DTE/TP50 mit +602,20
+USD zudem vor 100 DTE/TP50 mit +560,80 USD. Ueber die komplette Stresshistorie
+ist der Unterschied wesentlich groesser.
+
+Urteil: Die Hypothese, durch 100 DTE oder TP60/TP70 den Gewinn robust zu
+erhoehen, wird verworfen. Die bestehende Kombination Mindestlaufzeit 70 DTE und
+TP50 bleibt innerhalb dieser festen Matrix klar vorn: hoechste Gesamt-P/L,
+beste Kapitaleffizienz, kuerzeste Bindung und geringerer MTM-Drawdown. Es wird
+keine Bot-Regel geaendert.
+
+Artefakte:
+
+- `D:\PycharmProjects\PythonProject\research\analyze_xsp_vix_peak19_drop2_contango_dte_tp_sweep.py`
+- `D:\PycharmProjects\PythonProject\tests\test_xsp_vix_peak19_drop2_contango_dte_tp_sweep.py`
+- `D:\PycharmProjects\PythonProject\data\option_omega_15DTE_ruleset1_analysis\xsp_vix_peak19_drop2_contango_dte70_100_tp50_60_70_thetadata_v1\exact_summary.csv`
+- `D:\PycharmProjects\PythonProject\data\option_omega_15DTE_ruleset1_analysis\xsp_vix_peak19_drop2_contango_dte70_100_tp50_60_70_thetadata_v1\exact_matched_summary.csv`
+- `D:\PycharmProjects\PythonProject\data\option_omega_15DTE_ruleset1_analysis\xsp_vix_peak19_drop2_contango_dte70_100_tp50_60_70_thetadata_v1\contango_dte_tp_exact_comparison.png`
+
+## 33. Stop-Varianten fuer Contango vom 2026-08-19
+
+Als erster Fallschirmtest wurde die beste bisherige Kombination
+Mindestlaufzeit 70 DTE, TP50 und zehn Punkte Breite unveraendert gelassen. Nur
+der Exit wurde variiert. Jede Stopbedingung benoetigt valide Optionsquotes; bei
+der Strike-Regel sind zwei aufeinanderfolgende 5-Minuten-SPX-Bars unterhalb des
+Short-Strikes erforderlich. Der Regimeflip verlangt zwei aufeinanderfolgende
+Tages-Snapshots mit `VIX > VIX3M` nach dem Entry. Die Kombinationsregel verlangt
+beide bestaetigten Ereignisse irgendwann waehrend desselben Trades und beendet
+erst beim spaeteren Ereignis.
+
+| Variante | Stop-Exits | Gewinner | Netto-P/L | realisierter DD | Qualitaets-MTM-DD | schlechtester Trade | P/L nach 0,10 Slippage |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| kein Stop / TP50 | 0 | 23 | +1.176,70 USD | 0,00 USD | -878,60 USD | +38,40 USD | +946,70 USD |
+| Regimeflip, 2 Tagesbestaetigungen | 2 | 21 | +762,70 USD | -311,20 USD | -1.001,20 USD | -206,60 USD | +532,70 USD |
+| Short-Strike-Touch, 2 x 5 Minuten | 4 | 21 | -175,50 USD | -987,80 USD | -1.225,00 USD | -436,60 USD | -425,50 USD |
+| Kombination beider Bedingungen | 2 | 21 | +708,70 USD | -365,20 USD | -1.055,20 USD | -231,60 USD | +478,70 USD |
+
+Der Regimeflip beendet die Trades vom 2021-12-21 und 2022-01-11 am
+2022-03-01. Beide waeren ohne Stop spaeter mit TP50 abgeschlossen worden. Der
+Strike-Touch beendet zusaetzlich 2022-04-28 und 2023-02-14; auch diese Trades
+waeren in der ungefilterten Variante Gewinner geworden. Die Kombination stoppt
+ebenfalls nur die beiden Maerz-2022-Trades und verbessert weder P/L noch
+Drawdown.
+
+Damit bestaetigt sich die MAE-Warnung aus Abschnitt 31: Die Strategie kann den
+Short-Strike beziehungsweise die Backwardation kurzfristig beruehren und sich
+trotzdem spaeter normalisieren. Ein solcher Stop verwandelt Erholer in
+realisierte Verluste. Der Stop-Touch ist deshalb als Managementregel zu
+verwerfen; der Regime- und Kombinationsstop sind in dieser Form ebenfalls kein
+Vorteil.
+
+Urteil: Keine der drei Varianten wird in den Bot uebernommen. Der bisherige
+TP50-Exit bleibt unveraendert. Der naechste sachlich sinnvolle Risikotest ist
+kein weiterer frueher Stop, sondern ein separat vorab definierter
+Katastrophenstop nahe dem maximalen Spreadrisiko, der nur bei persistenter
+Quote-Bestaetigung greift. Er muss gegen die vollstaendige MAE-Verteilung und
+nicht nur gegen die zwei Stressfaelle kalibriert werden.
+
+Artefakte:
+
+- `D:\PycharmProjects\PythonProject\research\analyze_xsp_vix_peak19_drop2_contango_stops.py`
+- `D:\PycharmProjects\PythonProject\tests\test_xsp_vix_peak19_drop2_contango_stops.py`
+- `D:\PycharmProjects\PythonProject\data\option_omega_15DTE_ruleset1_analysis\xsp_vix_peak19_drop2_contango_stop_variants_thetadata_v1\exact_summary.csv`
+- `D:\PycharmProjects\PythonProject\data\option_omega_15DTE_ruleset1_analysis\xsp_vix_peak19_drop2_contango_stop_variants_thetadata_v1\contango_stop_variants_exact_comparison.png`

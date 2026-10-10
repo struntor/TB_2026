@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 import pandas as pd
 from ib_insync import Contract
@@ -33,6 +34,7 @@ from src.strategies.spxw_75dte_put_bwb import (
     paper_weekday_experiment_active,
 )
 from src.strategies.spxw_75dte_put_bwb_journal import register_manifest
+import src.strategies.spxw_75dte_put_bwb_journal as bwb_manifest
 
 
 def contract(con_id: int, strike: float) -> Contract:
@@ -95,6 +97,20 @@ class StrategyAndExecutionTests(unittest.TestCase):
         self.assertEqual("20261016", observed)
         self.assertEqual(80, (pd.Timestamp(observed) - pd.Timestamp("2026-07-28")).days)
 
+    def test_daily_fill_test_keeps_normal_risk_limits_and_vix_filter(self) -> None:
+        config = Spxw75DteBwbConfig()
+        for day in ("2026-09-03", "2026-09-04", "2026-09-08", "2026-09-09", "2026-09-14", "2026-10-02"):
+            observed = evaluate_entry(day, opening_vix=15.0, config=config)
+            self.assertTrue(observed.accepted, day)
+            self.assertEqual("daily_paper_fill_test_vix15_entry_accepted", observed.reason)
+            self.assertTrue(observed.factors[0]["paper_daily_fill_test_active"])
+            self.assertFalse(paper_weekday_experiment_active(day, config))
+            self.assertEqual(7, maximum_concurrent_positions_for_day(day, config))
+            self.assertFalse(evaluate_entry(day, opening_vix=14.99, config=config).accepted)
+            self.assertEqual("missing_data", evaluate_entry(day, opening_vix=None, config=config).status)
+        for day in ("2026-09-02", "2026-09-05", "2026-09-06"):
+            self.assertFalse(evaluate_entry(day, opening_vix=20.0, config=config).accepted)
+
     def test_combo_geometry_credit_risk_and_orders(self) -> None:
         chosen = selection()
         self.assertEqual(["BUY", "SELL", "BUY"], [leg.action for leg in chosen.combo_contract.comboLegs])
@@ -114,6 +130,38 @@ class StrategyAndExecutionTests(unittest.TestCase):
         self.assertEqual(("BUY", -1.8, "DAY"), (entry.action, entry.lmtPrice, entry.tif))
         self.assertEqual(("BUY", -1.6, "DAY"), (repriced_entry.action, repriced_entry.lmtPrice, repriced_entry.tif))
         self.assertEqual(("BUY", 1.05, "GTC"), (target.action, target.lmtPrice, target.tif))
+
+    def test_daily_test_does_not_re_evaluate_a_processed_day(self) -> None:
+        monitor = Spxw75DtePutBwbMonitor.__new__(Spxw75DtePutBwbMonitor)
+        monitor.strategy_config = Spxw75DteBwbConfig()
+        # No broker connection exists: any attempt past the guard would fail.
+        monitor._evaluate_entry(
+            MonitorState(evaluated_days=["2026-09-04"]),
+            pd.Timestamp("2026-09-04 09:32:00"),
+        )
+
+    def test_daily_manifest_coexists_with_prior_version_and_is_idempotent(self) -> None:
+        store = JournalStore(":memory:")
+        try:
+            old_variant = f"{bwb_manifest.STRATEGY_ID}@1.5.0-paper-weekday-fill-experiment"
+            with patch.multiple(
+                bwb_manifest,
+                STRATEGY_VERSION="1.5.0-paper-weekday-fill-experiment",
+                STRATEGY_VARIANT_ID=old_variant,
+                ENGINE_VERSION="spxw-75dte-put-bwb-live@1.5.0",
+                ENTRY_RULE_VERSION="1.5.0",
+                EXIT_RULE_VERSION="1.0.3",
+                CREATED_AT_UTC="2026-08-13T19:55:00Z",
+            ):
+                register_manifest(store, Spxw75DteBwbConfig())
+            before = [tuple(row) for row in store._connection.execute("SELECT * FROM rule_versions")]
+            register_manifest(store, Spxw75DteBwbConfig())
+            register_manifest(store, Spxw75DteBwbConfig())
+            after = [tuple(row) for row in store._connection.execute("SELECT * FROM rule_versions")]
+            self.assertEqual(4, len(after))
+            self.assertTrue(all(row in after for row in before))
+        finally:
+            store.close()
 
     def test_paper_guard_cannot_be_bypassed(self) -> None:
         require_paper_account("DU123")

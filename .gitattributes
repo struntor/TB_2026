@@ -1,0 +1,4 @@
+# Preserve the exact bytes checked by frozen strategy-version manifests.
+statistic/spx_adx_di_5min_2024_02_03/*.py -text
+statistic/spx_adx_di_5min_2024_02_03/*.csv -text
+statistic/spx_adx_di_5min_2024_02_03/*.json -text

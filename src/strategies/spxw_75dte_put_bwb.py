@@ -8,15 +8,16 @@ import pandas as pd
 
 
 STRATEGY_ID = "spx-75dte-put-bwb-tuesday-vix15"
-STRATEGY_VERSION = "1.5.0-paper-weekday-fill-experiment"
+STRATEGY_VERSION = "1.6.0-paper-daily-fill-test"
 STRATEGY_VARIANT_ID = f"{STRATEGY_ID}@{STRATEGY_VERSION}"
-ENGINE_VERSION = "spxw-75dte-put-bwb-live@1.5.0"
+ENGINE_VERSION = "spxw-75dte-put-bwb-live@1.6.0"
 MONEY_MANAGEMENT_VERSION = "one-contract-shared-defined-risk@1.0.0"
 SIGNAL_KEY_VERSION = "spxw75-bwb-signal@4"
 ENTRY_RULE_ID = "spxw-75dte-weekday-experiment-vix15-entry"
-ENTRY_RULE_VERSION = "1.5.0"
+ENTRY_RULE_VERSION = "1.6.0"
 EXIT_RULE_ID = "spxw-75dte-bwb-profit-target"
-EXIT_RULE_VERSION = "1.0.3"
+# The manifest hashes the full engine/config even when exit behavior is unchanged.
+EXIT_RULE_VERSION = "1.0.4"
 
 
 @dataclass(frozen=True, slots=True)
@@ -24,6 +25,7 @@ class Spxw75DteBwbConfig:
     entry_time_et: str = "09:32:00"
     latest_submission_time_et: str = "09:40:00"
     weekday: int = 3
+    paper_daily_entry_start_day: str = "2026-09-03"
     minimum_opening_vix: float = 15.0
     target_calendar_dte_floor: int = 75
     body_spot_fraction: float = 0.99
@@ -89,7 +91,8 @@ def evaluate_entry(
     day_text = stamp.strftime("%Y-%m-%d")
     decision = pd.Timestamp(f"{day_text} {config.entry_time_et}")
     experiment_active = paper_weekday_experiment_active(stamp, config)
-    allowed_weekdays = tuple(range(5)) if experiment_active else (config.weekday,)
+    daily_test_active = stamp.normalize() >= pd.Timestamp(config.paper_daily_entry_start_day).normalize()
+    allowed_weekdays = tuple(range(5)) if experiment_active or daily_test_active else (config.weekday,)
     weekday_ok = int(stamp.weekday()) in allowed_weekdays
     vix_ok = opening_vix is not None and float(opening_vix) >= config.minimum_opening_vix
     factors = (
@@ -100,6 +103,7 @@ def evaluate_entry(
             "threshold": list(allowed_weekdays),
             "passed": weekday_ok,
             "paper_weekday_experiment_active": experiment_active,
+            "paper_daily_fill_test_active": daily_test_active,
         },
         {
             "factor_code": "opening_vix_minimum",
@@ -115,7 +119,9 @@ def evaluate_entry(
     elif failed is None:
         status = "accepted"
         reason = (
-            "weekday_paper_experiment_vix15_entry_accepted"
+            "daily_paper_fill_test_vix15_entry_accepted"
+            if daily_test_active
+            else "weekday_paper_experiment_vix15_entry_accepted"
             if experiment_active
             else "thursday_vix15_entry_accepted"
         )

@@ -9,7 +9,7 @@ import pandas as pd
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-ENGINE_ROOT = Path(r"D:\PycharmProjects\PythonProject\statistic\spx_adx_di_5min_2024_02_03")
+ENGINE_ROOT = Path(r"D:\PycharmProjects\IBKR_TradingBot\statistic\spx_adx_di_5min_2024_02_03")
 
 if str(ENGINE_ROOT) not in sys.path:
     sys.path.insert(0, str(ENGINE_ROOT))

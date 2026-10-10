@@ -871,12 +871,12 @@
     {
       "strategy_id": "spx-75dte-put-bwb-tuesday-vix15",
       "parent_strategy_id": null,
-      "display_name": "SPX 75DTE Thursday VIX15 Put-BWB (Tuesday lineage)",
+      "display_name": "SPX 75DTE Daily Paper VIX15 Put-BWB (Tuesday lineage)",
       "family": "spx_options_multileg",
       "lifecycle_stage": "paper_trading",
       "work_state": "monitoring",
       "priority": "secondary",
-      "current_summary": "Die aus OptionOmega rekonstruierte Strategie ist lokal mit echten SPXW-Quotes reproduziert und als separat schaltbarer Paper-Monitor integriert. Der isolierte TWS-Test wurde am 2026-08-13 um 14:17:56 UTC zu 4,10 Credit gefillt; die inverse GTC-40%-Zielorder wurde zu 2,45 Debit uebermittelt. Version 1.5.0 arbeitet jeweils 5 Minuten bei aktuellem Mid-0,20, Mid-0,40 und Mid-0,65. Fuer das befristete Paper-Experiment der naechsten zehn Sitzungen vom 14.-27.08.2026 sind Mo-Fr, maximal 20 Positionen und kein dediziertes BWB-Budget-Veto zugelassen; danach gilt automatisch wieder Donnerstag mit normalen Limits.",
+      "current_summary": "Die rekonstruierte Dienstag-Baseline bleibt Referenz. Paper-Version 1.6.0 prueft ab 03.09.2026 bis auf Weiteres Mo-Fr ab 09:32 ET einen Einstieg bei VIX >= 15. Preisstaffel unveraendert: aktueller Mid-0,20, Mid-0,40 und Mid-0,65 fuer jeweils 5 Minuten, dann Storno; TP40 als GTC-Combo nach Fill. Normale Grenzen bleiben aktiv: maximal sieben offene Positionen und dedizierter BWB-Risikodeckel, standardmaessig 10.500 USD. Keine Produktionsfreigabe und keine Reaktivierung des historischen Budget-Bypasses.",
       "hypothesis": "Ein woechentlicher 75DTE +35/-55 Put-Broken-Wing-Butterfly auf SPXW erzielt bei VIX mindestens 15 durch Volatilitaetsabbau und asymmetrische Struktur einen positiven Erwartungswert.",
       "research_root": "D:\\PycharmProjects\\PythonProject\\statistic\\spx_75dte_put_bwb_research",
       "primary_source": "D:\\Trading\\research\\spx_75dte_put_bwb\\daily_mtm_v1\\report.md",
@@ -901,7 +901,7 @@
       },
       "money_management": {
         "status": "implemented_paper_sleeve",
-        "config_ref": "weekday=Thursday; spxw-75dte-bwb-max-risk-usd=10500; quantity=1; maximum_concurrent_positions=7",
+        "config_ref": "paper_daily_entry_start_day=2026-09-03; weekdays=Mo-Fr; spxw-75dte-bwb-max-risk-usd=10500; quantity=1; maximum_concurrent_positions=7",
         "open_issue": "Portfolioauswirkung zusammen mit den anderen Optionsstrategien ist noch nicht paper-verifiziert."
       },
       "ibkr_integration": {
@@ -919,8 +919,8 @@
         "last_audited": "2026-08-13"
       },
       "production_eligible": false,
-      "next_action": "Im Weekday-Paper-Experiment 14.-27.08.2026 Fill-Quote je Preisstufe und Journal-Reconciliation beobachten; danach automatisch zur Donnerstagseinstellung zurueckkehren.",
-      "last_updated": "2026-08-13"
+      "next_action": "Ab 03.09.2026 taeglichen Paper-Fill-Test mit normalen Risikolimits beobachten: Fill-Quote/Credit je Preisstufe und Journal-Reconciliation. Bestehenden Bot fuer neuen Code neu starten.",
+      "last_updated": "2026-09-03"
     },
     {
       "strategy_id": "iwm-rvx-pullback-100dte-put-credit",

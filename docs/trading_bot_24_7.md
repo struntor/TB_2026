@@ -59,7 +59,7 @@ Schalter allein erzeugt nur einen Journal-Dry-Run; eine Paperorder benötigt
 zusätzlich `--place-orders`, und dieser Strategiepfad akzeptiert ausschließlich
 ein `DU`-Konto.
 
-`--enable-spxw-75dte-put-bwb` aktiviert die aktuelle Donnerstag-Papervariante ab 09:32 ET.
+`--enable-spxw-75dte-put-bwb` aktiviert ab 03.09.2026 den täglichen Mo–Fr-Paper-Fill-Test ab 09:32 ET (VIX >= 15, normale Positions- und Risikolimits).
 
 Beim Start prueft der Live-Bot alle spaeter benoetigten Log-, Journal-, Overlay-
 und State-Verzeichnisse mit einem echten Schreib-/Flush-/Loeschtest. Ausserdem

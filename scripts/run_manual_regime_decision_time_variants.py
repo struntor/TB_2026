@@ -22,7 +22,7 @@ BOT_ROOT = Path(__file__).resolve().parents[1]
 PROJECTS_ROOT = BOT_ROOT.parent
 ENGINE_ROOT = (
     PROJECTS_ROOT
-    / "PythonProject"
+    / "IBKR_TradingBot"
     / "statistic"
     / "spx_adx_di_5min_2024_02_03"
 )

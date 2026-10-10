@@ -11,7 +11,7 @@ import pandas as pd
 
 
 ENGINE_DIR = Path(
-    r"D:\PycharmProjects\PythonProject\statistic\spx_adx_di_5min_2024_02_03"
+    r"D:\PycharmProjects\IBKR_TradingBot\statistic\spx_adx_di_5min_2024_02_03"
 )
 if str(ENGINE_DIR) not in sys.path:
     sys.path.insert(0, str(ENGINE_DIR))

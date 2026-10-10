@@ -20,3 +20,13 @@ tmp*/
 *.key
 *.pem
 secrets/
+
+# Private provider credentials; never commit the local runtime copy.
+config/thetadata_creds.txt
+
+# Legacy engine output stays out of Git; keep only deployed strategy inputs.
+statistic/spx_adx_di_5min_2024_02_03/*.csv
+!statistic/spx_adx_di_5min_2024_02_03/current_baseline_optimized_cutoff_2025_11_top50_symbols.csv
+!statistic/spx_adx_di_5min_2024_02_03/current_baseline_optimized_cutoff_2025_11_top50_symbol_rule_selection.csv
+!statistic/spx_adx_di_5min_2024_02_03/current_baseline_optimized_cutoff_2025_11_top50_rank_scores.csv
+statistic/spx_adx_di_5min_2024_02_03/*.png

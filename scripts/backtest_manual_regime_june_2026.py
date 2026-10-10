@@ -9,7 +9,7 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[2]
-STRATEGY_DIR = ROOT / "PythonProject" / "statistic" / "spx_adx_di_5min_2024_02_03"
+STRATEGY_DIR = ROOT / "IBKR_TradingBot" / "statistic" / "spx_adx_di_5min_2024_02_03"
 OUT_DIR = ROOT / "IBKR_TradingBot" / "out"
 ENGINE_LOG_DIR = OUT_DIR / "manual_regime_june_2026_engine_logs"
 

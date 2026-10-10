@@ -117,7 +117,7 @@ def main(arguments: Sequence[str] | None = None) -> None:
     if not days:
         raise ValueError("requested window contains no US equity session")
     log_path = args.log_path or args.trading_root / "logs" / f"data_backtest_catchup_{args.end_date:%Y%m%d}.log"
-    downloader = args.projects_root / "PythonProject" / "Daten_Download" / "Download_Asset_Data.py"
+    downloader = args.projects_root / "IBKR_TradingBot" / "Daten_Download" / "Download_Asset_Data.py"
     backtest = BOT_ROOT / "scripts" / "run_manual_regime_baseline_v1.py"
 
     print(f"catch-up window {days[0]}..{days[-1]}", flush=True)

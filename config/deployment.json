@@ -1,0 +1,10 @@
+{
+  "platform": "Windows",
+  "python": "3.13",
+  "repository_path": "D:/PycharmProjects/IBKR_TradingBot",
+  "runtime_data_root": "D:/Trading",
+  "nas_home": "\\\\Synology_NAS\\home",
+  "nas_raw_data": "\\\\Synology_NAS\\home\\Rohdaten",
+  "nas_journal_snapshot": "\\\\Synology_NAS\\home\\Journal",
+  "journal_mode": "restore verified NAS snapshot to local SSD before starting bot"
+}

@@ -10,7 +10,7 @@ Stand: 2026-08-17
 | quick_probe | SPY Failed-Auction Hard-12 First-Touch Options | `bot_integration` | `frozen_candidate` | `reproduced` | `implemented_unit_tested` | nein | Bot an einem Handelstag mit laufender Paper-TWS im Dry-Run starten; danach den ersten echten Paper-BAG-Fill und den Touch-/30m-Exit gegen NBBO und Journal pruefen. |
 | quick_probe | SPY Failed-Auction zu POC 2DTE Put-Fly/BWB | `backtest_validation` | `active` | `artifact_verified` | `not_started` | nein | Als unveraenderten Legacy-Kontrollanker behalten; neue Parameter nicht mehr auf dieser gemischten Retest-/First-Touch-Stichprobe auswaehlen. |
 | quick_probe | SPY Volume/VIX 0DTE Call-Fly | `statistical_evidence` | `parked` | `artifact_verified` | `not_started` | nein | Parken. Nur mit einer fachlich neuen, vorab festgelegten VIX-skalierten breiteren Struktur und einem neuen Forward-Fenster wieder aufnehmen; keine weiteren Filter auf dem bereits geoeffneten OOS-Block suchen. |
-| secondary | SPX 75DTE Thursday VIX15 Put-BWB (Tuesday lineage) | `paper_trading` | `monitoring` | `reproduced` | `implemented_paper_verified` | nein | Im Weekday-Paper-Experiment 14.-27.08.2026 Fill-Quote je Preisstufe und Journal-Reconciliation beobachten; danach automatisch zur Donnerstagseinstellung zurueckkehren. |
+| secondary | SPX 75DTE Daily Paper VIX15 Put-BWB (Tuesday lineage) | `paper_trading` | `monitoring` | `reproduced` | `implemented_paper_verified` | nein | Ab 03.09.2026 taeglichen Paper-Fill-Test mit normalen Risikolimits beobachten: Fill-Quote/Credit je Preisstufe und Journal-Reconciliation. Bestehenden Bot fuer neuen Code neu starten. |
 | secondary | SPX Flyagonal 12/15DTE | `paper_trading` | `monitoring` | `artifact_verified` | `not_started` | nein | DTE-Definition und Kostenmodell vereinheitlichen, den Management-Kandidaten einfrieren und die geplante echte Train/Test-Trennung ausfuehren. |
 | secondary | XSP VIX-Pullback 100DTE Put-Credit | `paper_trading` | `monitoring` | `reproduced` | `implemented_unit_tested` | nein | Version 1.0.1 unveraendert im DU-Paperkonto handeln und Entry, TP60/60-DTE-Exit, Restart sowie Journal-Reconciliation beobachten; keine weitere historische Filter- oder Parameterwahl. |
 | secondary | Multi-Stock IVR70 Put-Credit | `bot_integration` | `frozen_candidate` | `artifact_verified` | `implemented_unit_tested` | nein | Tages-Dry-Run mit laufender Paper-TWS und danach ersten BAG-Paper-Fill, TP-/21DTE-Exit und Journal-Reconciliation verifizieren. |
@@ -82,18 +82,18 @@ Stand: 2026-08-17
 - Hauptquelle: `D:\PycharmProjects\PythonProject\statistic\spy_volume_vix_research_part2\README.md`
 - Naechster Schritt: Parken. Nur mit einer fachlich neuen, vorab festgelegten VIX-skalierten breiteren Struktur und einem neuen Forward-Fenster wieder aufnehmen; keine weiteren Filter auf dem bereits geoeffneten OOS-Block suchen.
 
-### SPX 75DTE Thursday VIX15 Put-BWB (Tuesday lineage)
+### SPX 75DTE Daily Paper VIX15 Put-BWB (Tuesday lineage)
 
 - ID: `spx-75dte-put-bwb-tuesday-vix15`
 - Familie: `spx_options_multileg`
 - Status: `paper_trading` / `monitoring` / `secondary`
-- Kurzstand: Die aus OptionOmega rekonstruierte Strategie ist lokal mit echten SPXW-Quotes reproduziert und als separat schaltbarer Paper-Monitor integriert. Der isolierte TWS-Test wurde am 2026-08-13 um 14:17:56 UTC zu 4,10 Credit gefillt; die inverse GTC-40%-Zielorder wurde zu 2,45 Debit uebermittelt. Version 1.5.0 arbeitet jeweils 5 Minuten bei aktuellem Mid-0,20, Mid-0,40 und Mid-0,65. Fuer das befristete Paper-Experiment der naechsten zehn Sitzungen vom 14.-27.08.2026 sind Mo-Fr, maximal 20 Positionen und kein dediziertes BWB-Budget-Veto zugelassen; danach gilt automatisch wieder Donnerstag mit normalen Limits.
+- Kurzstand: Die rekonstruierte Dienstag-Baseline bleibt Referenz. Paper-Version 1.6.0 prueft ab 03.09.2026 bis auf Weiteres Mo-Fr ab 09:32 ET einen Einstieg bei VIX >= 15. Preisstaffel unveraendert: aktueller Mid-0,20, Mid-0,40 und Mid-0,65 fuer jeweils 5 Minuten, dann Storno; TP40 als GTC-Combo nach Fill. Normale Grenzen bleiben aktiv: maximal sieben offene Positionen und dedizierter BWB-Risikodeckel, standardmaessig 10.500 USD. Keine Produktionsfreigabe und keine Reaktivierung des historischen Budget-Bypasses.
 - IBKR: `implemented_paper_verified`; Dry-Run: `True`; Paper: `True`
 - Produktionsfreigabe: `False`
 - Audit-Evidenz: `reproduced`
 - Pruefbericht: `D:\PycharmProjects\IBKR_TradingBot\docs\strategy_portfolio\audits\spx-75dte-put-bwb-tuesday-vix15.md`
 - Hauptquelle: `D:\Trading\research\spx_75dte_put_bwb\daily_mtm_v1\report.md`
-- Naechster Schritt: Im Weekday-Paper-Experiment 14.-27.08.2026 Fill-Quote je Preisstufe und Journal-Reconciliation beobachten; danach automatisch zur Donnerstagseinstellung zurueckkehren.
+- Naechster Schritt: Ab 03.09.2026 taeglichen Paper-Fill-Test mit normalen Risikolimits beobachten: Fill-Quote/Credit je Preisstufe und Journal-Reconciliation. Bestehenden Bot fuer neuen Code neu starten.
 
 ### SPX Flyagonal 12/15DTE
 

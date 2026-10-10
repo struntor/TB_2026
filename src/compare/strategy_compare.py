@@ -11,7 +11,7 @@ import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 SHARED_ROOT = PROJECT_ROOT.parent
-PYTHONPROJECT_ROOT = SHARED_ROOT / "PythonProject"
+PYTHONPROJECT_ROOT = SHARED_ROOT / "IBKR_TradingBot"
 ENGINE_ROOT = PYTHONPROJECT_ROOT / "statistic" / "spx_adx_di_5min_2024_02_03"
 
 for candidate in (PYTHONPROJECT_ROOT, ENGINE_ROOT):

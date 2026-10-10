@@ -8,7 +8,7 @@ import pandas as pd
 
 ENGINE_ROOT = (
     Path(__file__).resolve().parents[2]
-    / "PythonProject"
+    / "IBKR_TradingBot"
     / "statistic"
     / "spx_adx_di_5min_2024_02_03"
 )

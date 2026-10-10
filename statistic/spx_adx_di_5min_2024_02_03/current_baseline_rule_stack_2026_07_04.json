@@ -1,0 +1,126 @@
+{
+  "baseline_date": "2026-07-04",
+  "cutoff": "2025-11",
+  "forward_start": "2025-12-01",
+  "active_layers": [
+    "current_baseline_gap_lhf_prior_churn",
+    "failed_countermove_weak_retest_veto",
+    "hard_lhf_cluster_veto_lb2_loss5_net350"
+  ],
+  "watchlist_not_active": {
+    "bullish_tier3_primary_trend_above_value_veto": {
+      "action_under_review": "skip_trade",
+      "conditions": {
+        "rule": "bullish_tier3_small_participation_breakout",
+        "side": "long",
+        "big_picture_regime_fresh": "bullish_primary",
+        "daily_structure_phase_fresh": "trend_or_unclassified",
+        "profile_price_location_fresh": "above_value"
+      },
+      "current_baseline_test": {
+        "top50_removed_trades": 14,
+        "top50_removed_winners": 3,
+        "top50_removed_losers": 11,
+        "top50_removed_net_profit": -760.38,
+        "top50_forward_effect": 0.0,
+        "top100_removed_trades": 25,
+        "top100_removed_winners": 7,
+        "top100_removed_losers": 18,
+        "top100_removed_net_profit": -1049.23,
+        "top100_forward_effect": 0.0
+      },
+      "status": "watchlist_only_no_forward_occurrence"
+    },
+    "gap_bearish_pressure_lower_high_volume_veto": {
+      "action_under_review": "skip_trade",
+      "conditions": {
+        "rule": "bearish_gap_breakdown_continuation_short",
+        "side": "short",
+        "signal_regime_fresh": "bearish_confirmed",
+        "big_picture_regime_fresh": "bearish_pressure",
+        "daily_structure_phase_fresh": "post_break_range_lower",
+        "volume_price_phase": "high_volume_breakdown"
+      },
+      "causal_order_note": "Must run before hard_lhf_cluster_veto_lb2_loss5_net350; skipped gap trades must not count as later closed Core-Short losses.",
+      "isolated_test_vs_active_baseline": {
+        "top50_removed_trades": 6,
+        "top50_removed_winners": 1,
+        "top50_removed_losers": 5,
+        "top50_delta_net_profit": 199.27,
+        "top50_delta_forward_net_profit": 93.96,
+        "top100_removed_trades": 8,
+        "top100_removed_winners": 2,
+        "top100_removed_losers": 6,
+        "top100_delta_net_profit": 191.88,
+        "top100_delta_forward_net_profit": 185.39
+      },
+      "causal_integrated_test_vs_active_baseline": {
+        "order": [
+          "failed_countermove_weak_retest_veto",
+          "gap_bearish_pressure_lower_high_volume_veto",
+          "hard_lhf_cluster_veto_lb2_loss5_net350"
+        ],
+        "top50_delta_net_profit": 199.27,
+        "top50_delta_forward_net_profit": 93.96,
+        "top50_delta_max_drawdown": 0.0,
+        "top50_delta_rolling50_worst_pnl": 0.0,
+        "top100_delta_net_profit": -60.81,
+        "top100_delta_forward_net_profit": -67.30,
+        "top100_delta_max_drawdown": 91.43,
+        "top100_delta_rolling50_worst_pnl": 185.27
+      },
+      "status": "watchlist_smoothness_candidate_not_active"
+    }
+  },
+  "failed_countermove_weak_retest_veto": {
+    "action": "skip_trade",
+    "conditions": {
+      "rule": "bearish_failed_countermove_short_baseline",
+      "side": "short",
+      "daily_structure_phase_fresh": "trend_or_unclassified",
+      "volume_price_phase": "normal_volume_trend",
+      "bearish_countermove_subregime": "bearish_countermove_weak_retest"
+    }
+  },
+  "hard_lhf_cluster_veto_lb2_loss5_net350": {
+    "action": "skip_trade",
+    "target_rule": "bearish_lower_high_failure_short",
+    "target_side": "short",
+    "lookback_calendar_days": 2,
+    "min_closed_core_short_losses": 5,
+    "max_closed_core_short_net_pnl": -350.0,
+    "core_short_rules": [
+      "bearish_gap_breakdown_continuation_short",
+      "bearish_lower_high_failure_short",
+      "bearish_failed_countermove_short_baseline"
+    ],
+    "causal_note": "Only actually kept and closed trades may trigger future cluster vetoes; skipped trades are not counted."
+  },
+  "fixed_basket_results": {
+    "top50": {
+      "current_baseline_net_profit": 37206.0800,
+      "new_baseline_net_profit": 37828.8592,
+      "delta_net_profit": 622.7792,
+      "current_forward_net_profit": 5299.1521,
+      "new_forward_net_profit": 5376.7202,
+      "current_profit_factor": 2.1534,
+      "new_profit_factor": 2.2079,
+      "current_max_drawdown": -914.2930,
+      "new_max_drawdown": -840.1533
+    },
+    "top100": {
+      "current_baseline_net_profit": 57474.2114,
+      "new_baseline_net_profit": 60359.3900,
+      "delta_net_profit": 2885.1785,
+      "current_forward_net_profit": 5446.2197,
+      "new_forward_net_profit": 6091.0732,
+      "current_profit_factor": 1.8063,
+      "new_profit_factor": 1.8933,
+      "current_max_drawdown": -1922.9684,
+      "new_max_drawdown": -1579.3675,
+      "current_rolling50_worst_pnl": -1246.1849,
+      "new_rolling50_worst_pnl": -1226.7825
+    }
+  },
+  "reproduction_script": "build_baseline_with_hard_lhf_cluster_veto.py"
+}

@@ -12,7 +12,7 @@ from ib_insync import util
 
 if __package__ in {None, ""}:
     sys.path.append(str(Path(__file__).resolve().parents[2]))
-    sys.path.append(str(Path(__file__).resolve().parents[3] / "PythonProject" / "statistic" / "spx_adx_di_5min_2024_02_03"))
+    sys.path.append(str(Path(__file__).resolve().parents[3] / "IBKR_TradingBot" / "statistic" / "spx_adx_di_5min_2024_02_03"))
 
 from manual_regime_bot_api import get_trade_openings_for_symbols
 from src.bot.basket_selector import StaticBasketSelector

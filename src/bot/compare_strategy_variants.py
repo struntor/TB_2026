@@ -6,7 +6,7 @@ from pathlib import Path
 
 if __package__ in {None, ""}:
     sys.path.append(str(Path(__file__).resolve().parents[2]))
-    sys.path.append(str(Path(__file__).resolve().parents[3] / "PythonProject" / "statistic" / "spx_adx_di_5min_2024_02_03"))
+    sys.path.append(str(Path(__file__).resolve().parents[3] / "IBKR_TradingBot" / "statistic" / "spx_adx_di_5min_2024_02_03"))
 
 from src.compare.strategy_compare import load_compare_config, run_many_symbol_comparisons, run_symbol_comparison
 
@@ -28,7 +28,7 @@ def main() -> None:
     parser.add_argument("--config", default=str(Path("configs") / "strategy_compare_v1.json"))
     parser.add_argument("--output-dir", default=str(Path("runs") / "strategy_compare"))
     parser.add_argument("--cache-dir", default=str(Path("runs") / "strategy_compare_cache"))
-    parser.add_argument("--credentials-file", default=str(Path(__file__).resolve().parents[3] / "PythonProject" / "config" / "thetadata_creds.txt"))
+    parser.add_argument("--credentials-file", default=str(Path(__file__).resolve().parents[3] / "IBKR_TradingBot" / "config" / "thetadata_creds.txt"))
     args = parser.parse_args()
 
     config_path = _resolve_path(args.config)

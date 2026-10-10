@@ -2,9 +2,8 @@
 
 ## Eingefrorene Regeln
 
-- Paper-Variante `1.5.0-paper-weekday-fill-experiment`: regulär Donnerstag,
-  vorübergehend an jedem Börsen-Wochentag vom 14.08.2026 bis einschließlich
-  27.08.2026; Entscheidung ab 09:32 ET;
+- Paper-Variante `1.6.0-paper-daily-fill-test`: ab 03.09.2026 an jedem
+  Börsen-Wochentag (Mo–Fr), bis auf Weiteres; Entscheidung ab 09:32 ET;
 - Tages-Open des VIX mindestens 15;
 - erster aktuell gelisteter SPXW-Verfall mit mindestens 75 Kalendertagen DTE;
 - Body am verfügbaren Strike, der 99 % des aktuellen SPX-Kurses am nächsten liegt;
@@ -21,7 +20,28 @@
 - nach dem Fill sofortige inverse GTC-Combo-Order bei 40 % Gewinn;
 - ansonsten Verfall; ausschließlich Paperkonto mit Präfix `DU`.
 
-## Befristetes Fill-Experiment 14.–27.08.2026
+## Aktueller täglicher Fill-Test ab 03.09.2026
+
+Geändert wird nur die Tageszulassung, nicht das Risikomanagement. Es gelten
+weiterhin maximal sieben offene BWB-Positionen und der konfigurierte dedizierte
+Risikodeckel (Standard 10.500 USD). Die alten Ausnahmen für 20 Positionen und
+Budget-Bypass werden nicht reaktiviert. VIX >= 15, Preisstaffel, TP40,
+DU-Kontoprüfung und Duplikatschutz bleiben unverändert. Pro Tag ist höchstens
+ein neuer Einstieg mit einer 1:-2:1-Struktur vorgesehen; Marktfeiertage werden
+im Handelskalender des Runners behandelt.
+
+Der normale Startschalter `--enable-spxw-75dte-put-bwb` genügt weiterhin.
+Ein bereits laufender Bot muss neu gestartet werden, um den neuen Code zu laden.
+Der State-Pfad bleibt gleich: offene Positionen, Zielorders und bereits
+ausgewertete Tage werden nicht zurückgesetzt. Ein heute bereits ausgewerteter
+Tag wird durch einen Neustart daher nicht erneut gehandelt.
+
+Das Journal kennzeichnet neue Entscheidungen mit Version
+`1.6.0-paper-daily-fill-test` und Faktor `paper_daily_fill_test_active`.
+Ziel ist die Beobachtung von Fill-Quote und Fill-Credit pro Preisstufe, nicht
+die Bestätigung einer höheren Rendite durch mehr tägliche Positionen.
+
+## Historisch: Befristetes Fill-Experiment 14.–27.08.2026
 
 Für die nächsten zehn Börsensitzungen vom 14.08. bis 27.08.2026 wird der Entry
 montags bis freitags geprüft. Der VIX-Open-Filter von mindestens 15 und
@@ -110,3 +130,7 @@ Version `1.5.0-paper-weekday-fill-experiment` ändert ausschließlich für den
 Positionsgrenzen. Die dreistufige Preislogik bleibt unverändert. Nach Ende des
 Fensters kehrt die Konfiguration ohne manuellen Eingriff zu Donnerstag und den
 normalen Limits zurück.
+
+Version `1.6.0-paper-daily-fill-test` aktiviert ab 03.09.2026 erneut Mo–Fr,
+jedoch ausdrücklich mit den normalen Positions- und Risikogrenzen. Das alte
+Experiment bleibt für historische Datumsprüfungen unverändert erhalten.

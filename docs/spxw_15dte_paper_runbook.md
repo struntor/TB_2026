@@ -1,4 +1,4 @@
-# SPX 15DTE Put-Credit – Paper-Runbook
+/cc# SPX 15DTE Put-Credit – Paper-Runbook
 
 ## Freigegebene Variante
 
