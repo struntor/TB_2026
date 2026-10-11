@@ -12,6 +12,10 @@ und ist für den aktuell eingerichteten Betrieb gedacht:
 
 Optionsstrategien werden systemseitig niemals an das Produktionskonto geroutet.
 
+Die aktuelle feste Symbolauswahl der Regime-Strategie steht in
+[`current_asset_basket.md`](current_asset_basket.md): 50 Basket-Symbole,
+davon 48 grundsätzlich für direkte Stock-/ETF-Orders routbar.
+
 ## Code-Standort nach der Konsolidierung (10.10.2026)
 
 Die unten aufgeführte Tagespipeline verwendet jetzt den Projektcode ausschließlich
